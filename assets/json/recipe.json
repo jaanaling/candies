@@ -1,0 +1,1067 @@
+ [
+      {
+        "id": "n1",
+        "image":"Chocolate Chip Bliss.png",
+        "title": "Chocolate Chip Bliss",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "All-purpose flour", "quantity": "200 g" },
+          { "name": "Chocolate chips", "quantity": "100 g" },
+          { "name": "Granulated sugar", "quantity": "100 g" },
+          { "name": "Butter", "quantity": "100 g" },
+          { "name": "Eggs", "quantity": "2 pcs" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat your oven to 180°C (356°F).",
+            "timer": 180
+          },
+          {
+            "description": "Cream the butter and sugar together in a bowl.",
+            "timer": null
+          },
+          {
+            "description": "Beat in the eggs, then fold in flour and chocolate chips.",
+            "timer": null
+          },
+          {
+            "description": "Bake the cookies for 12–15 minutes until golden brown.",
+            "timer": 900
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "image":"Creamy Caramel Squares.png",
+        "title": "Creamy Caramel Squares",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "All-purpose flour", "quantity": "200 g" },
+          { "name": "Caramel sauce", "quantity": "150 g" },
+          { "name": "Heavy cream", "quantity": "100 ml" },
+          { "name": "Brown sugar", "quantity": "80 g" },
+          { "name": "Butter", "quantity": "100 g" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 180°C (356°F). Grease a square baking pan.",
+            "timer": 180
+          },
+          {
+            "description": "Prepare a shortbread base by mixing flour, brown sugar, and butter; press into the pan and bake for 15 minutes.",
+            "timer": 900
+          },
+          {
+            "description": "In a saucepan, heat the caramel sauce and heavy cream until smooth.",
+            "timer": 300
+          },
+          {
+            "description": "Pour the caramel mixture over the baked base and refrigerate for at least 2 hours.",
+            "timer": 7200
+          }
+        ]
+      },
+      {
+        "id": "n3",
+        "image":"Peanut Butter Bites.png",
+        "title": "Peanut Butter Bites",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Peanut butter", "quantity": "100 g" },
+          { "name": "All-purpose flour", "quantity": "150 g" },
+          { "name": "Confectioners’ sugar", "quantity": "50 g" },
+          { "name": "Milk", "quantity": "50 ml" }
+        ],
+        "steps": [
+          {
+            "description": "Combine peanut butter, sugar, and flour in a bowl.",
+            "timer": null
+          },
+          {
+            "description": "Gradually add milk until a soft dough forms.",
+            "timer": null
+          },
+          {
+            "description": "Roll the dough into small bite-sized balls.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for 20 minutes before serving.",
+            "timer": 1200
+          }
+        ]
+      },
+      {
+        "id": "n4",
+        "image":"Fudgy Brownie Delight.png",
+        "title": "Fudgy Brownie Delight",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "Dark chocolate", "quantity": "200 g" },
+          { "name": "Butter", "quantity": "100 g" },
+          { "name": "Sugar", "quantity": "150 g" },
+          { "name": "All-purpose flour", "quantity": "100 g" },
+          { "name": "Eggs", "quantity": "2 pcs" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 170°C (338°F). Line a brownie pan with parchment paper.",
+            "timer": 180
+          },
+          {
+            "description": "Melt chocolate and butter together in a double boiler or microwave.",
+            "timer": 300
+          },
+          {
+            "description": "Stir in sugar, then whisk in eggs and flour until combined.",
+            "timer": null
+          },
+          {
+            "description": "Pour into the pan and bake for 20–25 minutes. Cool before cutting.",
+            "timer": 1500
+          }
+        ]
+      },
+      {
+        "id": "n5",
+        "image":"Berry Swirl Cheesecake.png",
+        "title": "Berry Swirl Cheesecake",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Cream cheese", "quantity": "200 g" },
+          { "name": "Mixed berries purée", "quantity": "100 g" },
+          { "name": "Sugar", "quantity": "100 g" },
+          { "name": "Graham cracker crumbs", "quantity": "150 g" },
+          { "name": "Butter", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 160°C (320°F). Combine graham crumbs and melted butter to form a crust. Press into a springform pan.",
+            "timer": 300
+          },
+          {
+            "description": "Beat cream cheese and sugar until smooth.",
+            "timer": null
+          },
+          {
+            "description": "Pour filling over crust, then swirl in berry purée with a knife.",
+            "timer": null
+          },
+          {
+            "description": "Bake for 30 minutes, then let cool completely before slicing.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "n6",
+        "image":"Lemon Zest Cookies.png",
+        "title": "Lemon Zest Cookies",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Lemon zest", "quantity": "1 tbsp" },
+          { "name": "Butter", "quantity": "100 g" },
+          { "name": "Sugar", "quantity": "100 g" },
+          { "name": "All-purpose flour", "quantity": "200 g" },
+          { "name": "Egg", "quantity": "1 pc" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 180°C (356°F).",
+            "timer": 180
+          },
+          {
+            "description": "Cream butter and sugar until fluffy, then beat in the egg.",
+            "timer": null
+          },
+          {
+            "description": "Add flour and lemon zest, mix into a smooth dough.",
+            "timer": null
+          },
+          {
+            "description": "Shape the cookies and bake for 10–12 minutes.",
+            "timer": 720
+          }
+        ]
+      },
+      {
+        "id": "n7",
+        "image":"Crispy Rice Treats.png",
+        "title": "Crispy Rice Treats",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Rice cereal", "quantity": "200 g" },
+          { "name": "Marshmallows", "quantity": "150 g" },
+          { "name": "Butter", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Melt butter and marshmallows in a large pot over low heat.",
+            "timer": 240
+          },
+          {
+            "description": "Stir in the rice cereal until evenly coated.",
+            "timer": null
+          },
+          {
+            "description": "Press mixture into a greased pan.",
+            "timer": null
+          },
+          {
+            "description": "Let cool for 30 minutes before slicing.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "n8",
+        "image":"Vanilla Bean Fudge.png",
+        "title": "Vanilla Bean Fudge",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "Vanilla extract", "quantity": "1 tsp" },
+          { "name": "Sweetened condensed milk", "quantity": "200 ml" },
+          { "name": "Butter", "quantity": "50 g" },
+          { "name": "White chocolate", "quantity": "200 g" }
+        ],
+        "steps": [
+          {
+            "description": "In a saucepan, heat condensed milk and butter over medium-low heat.",
+            "timer": 300
+          },
+          {
+            "description": "Stir in chopped white chocolate until melted.",
+            "timer": null
+          },
+          {
+            "description": "Mix in vanilla extract for extra flavor.",
+            "timer": null
+          },
+          {
+            "description": "Pour into a lined pan and refrigerate for at least 2 hours.",
+            "timer": 7200
+          }
+        ]
+      },
+      {
+        "id": "n9",
+        "image":"Classic Marshmallow Bars.png",
+        "title": "Classic Marshmallow Bars",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Marshmallows", "quantity": "150 g" },
+          { "name": "Crushed biscuits", "quantity": "200 g" },
+          { "name": "Butter", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Line a baking dish with parchment paper.",
+            "timer": null
+          },
+          {
+            "description": "Melt marshmallows and butter together in a large saucepan.",
+            "timer": 300
+          },
+          {
+            "description": "Stir in crushed biscuits until well combined.",
+            "timer": null
+          },
+          {
+            "description": "Press into the dish and let set for 30 minutes before cutting.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "n10",
+        "image":"Dark Chocolate Truffles.png",
+        "title": "Dark Chocolate Truffles",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Dark chocolate", "quantity": "200 g" },
+          { "name": "Heavy cream", "quantity": "100 ml" }
+        ],
+        "steps": [
+          {
+            "description": "Warm the cream in a saucepan without boiling.",
+            "timer": 300
+          },
+          {
+            "description": "Pour the hot cream over chopped dark chocolate and stir until smooth.",
+            "timer": null
+          },
+          {
+            "description": "Chill the mixture for 2 hours until firm.",
+            "timer": 7200
+          },
+          {
+            "description": "Scoop and roll into truffles, then coat with cocoa powder.",
+            "timer": null
+          }
+        ]
+      },
+      {
+        "id": "n11",
+        "image":"Honey Glazed Pecans.png",
+        "title": "Honey Glazed Pecans",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Pecans", "quantity": "200 g" },
+          { "name": "Honey", "quantity": "50 ml" },
+          { "name": "Salt", "quantity": "a pinch" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 160°C (320°F).",
+            "timer": 180
+          },
+          {
+            "description": "Mix pecans, honey, and a pinch of salt in a bowl.",
+            "timer": null
+          },
+          {
+            "description": "Spread pecans on a baking sheet and roast for 10–12 minutes.",
+            "timer": 720
+          },
+          {
+            "description": "Cool before serving to let glaze set.",
+            "timer": null
+          }
+        ]
+      },
+      {
+        "id": "n12",
+        "image":"White Chocolate Bark.png",
+        "title": "White Chocolate Bark",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "White chocolate", "quantity": "200 g" },
+          { "name": "Mixed nuts or dried fruits", "quantity": "to taste" }
+        ],
+        "steps": [
+          {
+            "description": "Line a baking tray with parchment paper.",
+            "timer": null
+          },
+          {
+            "description": "Melt white chocolate in a double boiler or microwave.",
+            "timer": 300
+          },
+          {
+            "description": "Spread melted chocolate onto the tray, top with nuts/fruits.",
+            "timer": null
+          },
+          {
+            "description": "Chill for at least 1 hour until firm, then break into pieces.",
+            "timer": 3600
+          }
+        ]
+      },
+      {
+        "id": "n13",
+        "image":"Cinnamon Sugar Donuts.png",
+        "title": "Cinnamon Sugar Donuts",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "All-purpose flour", "quantity": "250 g" },
+          { "name": "Sugar", "quantity": "100 g" },
+          { "name": "Cinnamon", "quantity": "1 tsp" },
+          { "name": "Milk", "quantity": "100 ml" },
+          { "name": "Egg", "quantity": "1 pc" }
+        ],
+        "steps": [
+          {
+            "description": "Combine flour, sugar, and cinnamon in a mixing bowl.",
+            "timer": null
+          },
+          {
+            "description": "Stir in milk and egg to form a donut batter.",
+            "timer": null
+          },
+          {
+            "description": "Heat oil in a deep fryer to 170°C (338°F).",
+            "timer": 180
+          },
+          {
+            "description": "Fry donuts for 2–3 minutes on each side, then roll in cinnamon sugar.",
+            "timer": 300
+          }
+        ]
+      },
+      {
+        "id": "n14",
+        "image":"Buttery Shortbread Bites.png",
+        "title": "Buttery Shortbread Bites",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Butter", "quantity": "150 g" },
+          { "name": "All-purpose flour", "quantity": "200 g" },
+          { "name": "Powdered sugar", "quantity": "50 g" },
+          { "name": "Salt", "quantity": "a pinch" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 180°C (356°F).",
+            "timer": 180
+          },
+          {
+            "description": "Cream butter and powdered sugar, then add flour and salt to form a dough.",
+            "timer": null
+          },
+          {
+            "description": "Roll or press dough into a baking pan and score into squares.",
+            "timer": null
+          },
+          {
+            "description": "Bake for 15 minutes until lightly golden, then cut fully.",
+            "timer": 900
+          }
+        ]
+      },
+      {
+        "id": "n15",
+        "image":"Toffee Crunch Squares.png",
+        "title": "Toffee Crunch Squares",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "Toffee candies", "quantity": "150 g" },
+          { "name": "All-purpose flour", "quantity": "200 g" },
+          { "name": "Brown sugar", "quantity": "80 g" },
+          { "name": "Butter", "quantity": "100 g" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 180°C (356°F). Lightly grease an 8x8-inch pan.",
+            "timer": 180
+          },
+          {
+            "description": "Mix flour, brown sugar, and butter to form a crumbly base. Press into the pan and bake for 10 minutes.",
+            "timer": 600
+          },
+          {
+            "description": "Melt toffee candies in a saucepan over low heat, stirring constantly.",
+            "timer": 300
+          },
+          {
+            "description": "Pour the melted toffee over the crust and bake another 5 minutes. Cool before slicing.",
+            "timer": 300
+          }
+        ]
+      },
+      {
+        "id": "n16",
+        "image":"Minty Chocolate Drops.png",
+        "title": "Minty Chocolate Drops",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Dark chocolate", "quantity": "150 g" },
+          { "name": "Mint extract", "quantity": "1 tsp" },
+          { "name": "Butter", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Melt dark chocolate and butter together in a microwave-safe bowl.",
+            "timer": 300
+          },
+          {
+            "description": "Stir in the mint extract thoroughly.",
+            "timer": null
+          },
+          {
+            "description": "Use a spoon or piping bag to create small drops on parchment paper.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for at least 1 hour until firm.",
+            "timer": 3600
+          }
+        ]
+      },
+      {
+        "id": "n17",
+        "image":"Coconut Macaroon Magic.png",
+        "title": "Coconut Macaroon Magic",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "Shredded coconut", "quantity": "200 g" },
+          { "name": "Sweetened condensed milk", "quantity": "100 ml" },
+          { "name": "Vanilla extract", "quantity": "1 tsp" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 170°C (338°F). Line a baking sheet with parchment paper.",
+            "timer": 180
+          },
+          {
+            "description": "Combine shredded coconut, condensed milk, and vanilla extract.",
+            "timer": null
+          },
+          {
+            "description": "Scoop spoonfuls onto the baking sheet.",
+            "timer": null
+          },
+          {
+            "description": "Bake for 15–18 minutes until golden at the edges.",
+            "timer": 1080
+          }
+        ]
+      },
+      {
+        "id": "n18",
+        "image":"Raspberry Jelly Hearts.png",
+        "title": "Raspberry Jelly Hearts",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Raspberry purée", "quantity": "100 g" },
+          { "name": "Gelatin", "quantity": "10 g" },
+          { "name": "Sugar", "quantity": "50 g" },
+          { "name": "Water", "quantity": "50 ml" }
+        ],
+        "steps": [
+          {
+            "description": "Combine water and sugar in a saucepan and bring to a simmer.",
+            "timer": 300
+          },
+          {
+            "description": "Stir in gelatin until dissolved, then mix in raspberry purée.",
+            "timer": null
+          },
+          {
+            "description": "Pour mixture into heart-shaped molds.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for 2 hours until set.",
+            "timer": 7200
+          }
+        ]
+      },
+      {
+        "id": "n19",
+        "image":"Soft Gingerbread Cookies.png",
+        "title": "Soft Gingerbread Cookies",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "All-purpose flour", "quantity": "300 g" },
+          { "name": "Ground ginger", "quantity": "1 tsp" },
+          { "name": "Honey", "quantity": "50 ml" },
+          { "name": "Brown sugar", "quantity": "100 g" },
+          { "name": "Egg", "quantity": "1 pc" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 180°C (356°F).",
+            "timer": 180
+          },
+          {
+            "description": "Mix flour, ginger, and brown sugar in a bowl.",
+            "timer": null
+          },
+          {
+            "description": "Add honey and egg; knead into a soft dough.",
+            "timer": null
+          },
+          {
+            "description": "Roll out dough, cut shapes, and bake for 12–15 minutes.",
+            "timer": 900
+          }
+        ]
+      },
+      {
+        "id": "n20",
+        "image":"Nutty Nougat Bars.png",
+        "title": "Nutty Nougat Bars",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Nougat", "quantity": "100 g" },
+          { "name": "Mixed nuts", "quantity": "100 g" },
+          { "name": "Milk chocolate", "quantity": "100 g" }
+        ],
+        "steps": [
+          {
+            "description": "Melt nougat in a double boiler or microwave-safe bowl.",
+            "timer": 300
+          },
+          {
+            "description": "Stir in chopped mixed nuts.",
+            "timer": null
+          },
+          {
+            "description": "Spread the mixture in a lined pan and chill for 1 hour.",
+            "timer": 3600
+          },
+          {
+            "description": "Melt milk chocolate and spread on top, then chill again.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "n21",
+        "image":"Milk Chocolate Pops.png",
+        "title": "Milk Chocolate Pops",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 2,
+        "ingredients": [
+          { "name": "Milk chocolate", "quantity": "150 g" },
+          { "name": "Lollipop sticks", "quantity": "various" }
+        ],
+        "steps": [
+          {
+            "description": "Melt milk chocolate gently in a double boiler.",
+            "timer": 300
+          },
+          {
+            "description": "Pour chocolate into small molds and insert sticks.",
+            "timer": null
+          },
+          {
+            "description": "Tap molds lightly to remove air bubbles.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for 1 hour to set completely.",
+            "timer": 3600
+          }
+        ]
+      },
+      {
+        "id": "n22",
+        "image":"Salted Caramel Pretzels.png",
+        "title": "Salted Caramel Pretzels",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "Pretzels", "quantity": "200 g" },
+          { "name": "Caramel sauce", "quantity": "100 g" },
+          { "name": "Sea salt", "quantity": "a pinch" }
+        ],
+        "steps": [
+          {
+            "description": "Warm caramel sauce in a small pan.",
+            "timer": 300
+          },
+          {
+            "description": "Dip pretzels halfway into caramel, then place on parchment paper.",
+            "timer": null
+          },
+          {
+            "description": "Sprinkle with sea salt while caramel is still warm.",
+            "timer": null
+          },
+          {
+            "description": "Chill for 15 minutes to set.",
+            "timer": 900
+          }
+        ]
+      },
+      {
+        "id": "n23",
+        "image":"Strawberry Bliss Tarts.png",
+        "title": "Strawberry Bliss Tarts",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Strawberry purée", "quantity": "100 g" },
+          { "name": "Tart dough", "quantity": "200 g" },
+          { "name": "Cream", "quantity": "50 ml" }
+        ],
+        "steps": [
+          {
+            "description": "Preheat oven to 170°C (338°F). Roll out tart dough and place in tart pans.",
+            "timer": 300
+          },
+          {
+            "description": "Bake the tart shells for 12–15 minutes until lightly golden.",
+            "timer": 900
+          },
+          {
+            "description": "Whisk strawberry purée with cream and a bit of sugar if needed.",
+            "timer": null
+          },
+          {
+            "description": "Fill cooled tart shells with strawberry mixture and chill for 30 minutes.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "n24",
+        "image":"Matcha Green Tea Fudge.png",
+        "title": "Matcha Green Tea Fudge",
+        "category": "normal",
+        "isLocked": false,
+        "requiredCountToUnlock": 0,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 3,
+        "ingredients": [
+          { "name": "White chocolate", "quantity": "200 g" },
+          { "name": "Heavy cream", "quantity": "100 ml" },
+          { "name": "Matcha powder", "quantity": "1 tsp" }
+        ],
+        "steps": [
+          {
+            "description": "Heat cream in a saucepan over low heat.",
+            "timer": 300
+          },
+          {
+            "description": "Add chopped white chocolate and stir until melted.",
+            "timer": null
+          },
+          {
+            "description": "Whisk in matcha powder until fully combined.",
+            "timer": null
+          },
+          {
+            "description": "Pour into a lined pan and refrigerate for 2 hours.",
+            "timer": 7200
+          }
+        ]
+      },
+  
+      {
+        "id": "b1",
+        "image":"Exploding Chocolate Lava Bomb.png",
+        "title": "Exploding Chocolate Lava Bomb",
+        "category": "bomb",
+        "isLocked": true,
+        "requiredCountToUnlock": 5,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 5,
+        "ingredients": [
+          { "name": "Dark chocolate", "quantity": "200 g" },
+          { "name": "Butter", "quantity": "100 g" },
+          { "name": "Heavy cream", "quantity": "50 ml" },
+          { "name": "Cocoa powder", "quantity": "2 tbsp" }
+        ],
+        "steps": [
+          {
+            "description": "Melt chocolate and butter over low heat.",
+            "timer": 300
+          },
+          {
+            "description": "Combine with heavy cream to create a rich center filling.",
+            "timer": null
+          },
+          {
+            "description": "Freeze the filling in small half-sphere molds.",
+            "timer": 3600
+          },
+          {
+            "description": "Prepare a chocolate shell by brushing melted chocolate inside sphere molds.",
+            "timer": null
+          },
+          {
+            "description": "Insert the frozen filling, seal the spheres, and refrigerate until ready to serve.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "b2",
+        "image":"Golden Caramel Surprise Sphere.png",
+        "title": "Golden Caramel Surprise Sphere",
+        "category": "bomb",
+        "isLocked": true,
+        "requiredCountToUnlock": 5,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Caramel", "quantity": "150 g" },
+          { "name": "White chocolate", "quantity": "200 g" },
+          { "name": "Edible gold dust", "quantity": "as needed" }
+        ],
+        "steps": [
+          {
+            "description": "Melt white chocolate and coat the inside of spherical molds.",
+            "timer": null
+          },
+          {
+            "description": "Chill until firm, about 10 minutes.",
+            "timer": 600
+          },
+          {
+            "description": "Fill spheres with caramel and gently seal with more white chocolate.",
+            "timer": 300
+          },
+          {
+            "description": "Dust each sphere with edible gold dust for a golden finish.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for 30 minutes to set completely.",
+            "timer": 1800
+          }
+        ]
+      },
+      {
+        "id": "b3",
+        "image":"Sparkling Berry Blast Bomb.png",
+        "title": "Sparkling Berry Blast Bomb",
+        "category": "bomb",
+        "isLocked": true,
+        "requiredCountToUnlock": 10,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 5,
+        "ingredients": [
+          { "name": "Mixed berry purée", "quantity": "100 g" },
+          { "name": "White chocolate", "quantity": "150 g" },
+          { "name": "Sparkling sugar or edible glitter", "quantity": "2 tbsp" }
+        ],
+        "steps": [
+          {
+            "description": "Melt white chocolate and coat the molds; set aside to harden.",
+            "timer": 600
+          },
+          {
+            "description": "Simmer berry purée until slightly thickened, then cool.",
+            "timer": 300
+          },
+          {
+            "description": "Fill each hardened half with berry purée and seal with more melted chocolate.",
+            "timer": null
+          },
+          {
+            "description": "Dust with sparkling sugar or edible glitter.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for 1 hour before serving for a firm set.",
+            "timer": 3600
+          }
+        ]
+      },
+      {
+        "id": "b4",
+        "image":"Frosted Candy Explosion Ball.png",
+        "title": "Frosted Candy Explosion Ball",
+        "category": "bomb",
+        "isLocked": true,
+        "requiredCountToUnlock": 15,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 4,
+        "ingredients": [
+          { "name": "Assorted candies", "quantity": "100 g" },
+          { "name": "Dark chocolate", "quantity": "150 g" },
+          { "name": "Royal icing or frosting", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Melt dark chocolate and coat sphere molds evenly.",
+            "timer": 600
+          },
+          {
+            "description": "Let the chocolate shells set in the fridge for 10 minutes.",
+            "timer": 600
+          },
+          {
+            "description": "Fill with assorted candies, leaving room to seal.",
+            "timer": null
+          },
+          {
+            "description": "Seal spheres with more melted chocolate and cool again.",
+            "timer": 900
+          },
+          {
+            "description": "Decorate the exterior with royal icing or frosting for a frosted effect.",
+            "timer": null
+          }
+        ]
+      },
+      {
+        "id": "b5",
+        "title": "Rainbow Sprinkle Delight Bomb",
+        "image": "Rainbow Sprinkle Delight Bomb.png",
+        "category": "bomb",
+        "isLocked": true,
+        "requiredCountToUnlock": 20,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 5,
+        "ingredients": [
+          { "name": "White chocolate", "quantity": "200 g" },
+          { "name": "Rainbow sprinkles", "quantity": "50 g" },
+          { "name": "Cake crumbs (optional)", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Melt white chocolate in a double boiler; coat half-sphere molds.",
+            "timer": 600
+          },
+          {
+            "description": "Sprinkle the interior with rainbow sprinkles and let set.",
+            "timer": null
+          },
+          {
+            "description": "Optionally fill with cake crumbs or additional sprinkles.",
+            "timer": null
+          },
+          {
+            "description": "Seal the spheres with extra white chocolate and refrigerate.",
+            "timer": 1800
+          },
+          {
+            "description": "Decorate the exterior with more sprinkles if desired.",
+            "timer": null
+          }
+        ]
+      },
+      {
+        "id": "b6",
+
+        "title": "Hazelnut Crunch Inferno",
+        "category": "bomb",
+        "image": "Hazelnut Crunch Inferno.png",
+        "isLocked": true,
+        "requiredCountToUnlock": 24,
+        "isCompleted": false,
+        "isFavorite": false,
+        "difficulty": 5,
+        "ingredients": [
+          { "name": "Hazelnuts (chopped)", "quantity": "100 g" },
+          { "name": "Milk chocolate", "quantity": "150 g" },
+          { "name": "Caramelized sugar", "quantity": "50 g" }
+        ],
+        "steps": [
+          {
+            "description": "Toast hazelnuts in a pan for 5 minutes until lightly golden.",
+            "timer": 300
+          },
+          {
+            "description": "Melt milk chocolate and combine with crushed caramelized sugar.",
+            "timer": 300
+          },
+          {
+            "description": "Coat sphere molds with a thin layer of the chocolate mixture.",
+            "timer": null
+          },
+          {
+            "description": "Sprinkle toasted hazelnuts inside and seal with additional chocolate.",
+            "timer": null
+          },
+          {
+            "description": "Refrigerate for 30 minutes to create a crunchy inferno center.",
+            "timer": 1800
+          }
+        ]
+      }
+    ]
+  
+  
