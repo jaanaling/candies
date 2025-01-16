@@ -31,7 +31,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
   int _timeLeft = 0;
   bool isFavorite = false;
   final GlobalKey shareButtonKey = GlobalKey();
-    final GlobalKey shareButtonKey2 = GlobalKey();
+  final GlobalKey shareButtonKey2 = GlobalKey();
 
   @override
   void initState() {
@@ -102,10 +102,13 @@ class _RecipeScreenState extends State<RecipeScreen> {
                             ..pop()
                             ..pop(),
                           child: AppButton(
-                              color: ButtonColors.blue,
-                              bottomPadding: 7,
-                              radius: 19,
-                              widget: const Text('back'), width: 142, height: 63,),
+                            color: ButtonColors.blue,
+                            bottomPadding: 7,
+                            radius: 19,
+                            widget: const Text('back'),
+                            width: 142,
+                            height: 63,
+                          ),
                         ),
                       ],
                     ),
@@ -163,19 +166,31 @@ class _RecipeScreenState extends State<RecipeScreen> {
                         bottomPadding: 6,
                         color: ButtonColors.purple,
                         width:
-                        getWidth(context, percent: 1) - 16 - 11 - 61 - 40,
+                            getWidth(context, percent: 1) - 16 - 11 - 61 - 40,
                         height: 87,
-                        widget: Row(
-                          children: [
-                            Text(widget.recipe.ingredients[index].name),
-                            Text(widget.recipe.ingredients[index].quantity),
-                          ],
+                        widget: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: getWidth(context, percent: 0.44),
+                                child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    alignment: Alignment.centerLeft,
+
+                                    child: Text(
+                                        widget.recipe.ingredients[index].name,)),
+                              ),
+                              Text(widget.recipe.ingredients[index].quantity),
+                            ],
+                          ),
                         ),
                       ),
                       AppButton(
                         color: ButtonColors.blue,
-                          width: 61,
-                          height: 61,
+                        width: 61,
+                        height: 61,
                         bottomPadding: 5,
                         widget: AppIcon(
                           asset: IconProvider.shop.buildImageUrl(),
@@ -188,8 +203,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                   ShoppingList(
                                     id: const Uuid().v4(),
                                     name: widget.recipe.ingredients[index].name,
-                                    quantity:
-                                        widget.recipe.ingredients[index].quantity,
+                                    quantity: widget
+                                        .recipe.ingredients[index].quantity,
                                   ),
                                 ),
                               );
@@ -290,11 +305,18 @@ class _RecipeScreenState extends State<RecipeScreen> {
           ),
         ),
         AppBarWidget(
-          widgets: Row(
-            children: [
-              Text(widget.recipe.title),
-              _actions(context, () => setState(() {}), false),
-            ],
+          widgets: Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                    width: getWidth(context, percent: 0.5),
+                    child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(widget.recipe.title))),
+                _actions(context, () => setState(() {}), false),
+              ],
+            ),
           ),
           hasBackButton: true,
         ),
@@ -308,8 +330,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
         IconButton(
           icon: AppIcon(
             asset: IconProvider.heart.buildImageUrl(),
-            color: isFavorite ? null : Colors.black
-                                                        .withOpacity(0.5), blendMode: BlendMode.srcATop,
+            color: isFavorite ? null : Colors.black.withOpacity(0.5),
+            blendMode: BlendMode.srcATop,
             width: 33,
             height: 30,
           ),
@@ -325,13 +347,14 @@ class _RecipeScreenState extends State<RecipeScreen> {
           },
         ),
         IconButton(
-          key: isdialog ? shareButtonKey2:shareButtonKey,
+          key: isdialog ? shareButtonKey2 : shareButtonKey,
           icon: AppIcon(
             asset: IconProvider.share.buildImageUrl(),
             width: 32,
             height: 33,
           ),
-          onPressed: () => _shareRecipe(isdialog ? shareButtonKey2:shareButtonKey),
+          onPressed: () =>
+              _shareRecipe(isdialog ? shareButtonKey2 : shareButtonKey),
         ),
       ],
     );
