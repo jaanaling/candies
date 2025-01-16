@@ -22,100 +22,97 @@ class ShopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: BlocBuilder<AppBloc, AppState>(
-        builder: (context, state) {
-          if (state is! AppLoaded) return const SizedBox();
-
-          return Stack(
-            children: [
-              SingleChildScrollView(
-                padding: const EdgeInsets.only(top: 140),
-                child: Column(
-                  children: [
-                    ListView.separated(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      itemCount: state.shoppingList.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      separatorBuilder: (_, __) => const Gap(16),
-                      itemBuilder: (context, index) {
-                        final item = state.shoppingList[index];
-                        return Row(
-                          children: [
-                            Expanded(
-                              child: AppButton(
-                                color: ButtonColors.pink,
-                                widget: Row(
-                                  children: [
-                                    Text(item.name),
-                                    Text(item.quantity),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const Gap(11),
-                            AppButton(
-                              color: ButtonColors.blue,
-                              widget: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: AppIcon(
-                                  asset: IconProvider.shop.buildImageUrl(),
-                                  width: 50,
-                                  height: 43,
-                                ),
-                              ),
-                              onPressed: () => removeItem(item, context),
-                            ),
-                            const Gap(11),
-                            AppButton(
-                              color: ButtonColors.red,
-                              widget: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: AppIcon(
-                                  asset: IconProvider.remove.buildImageUrl(),
-                                  width: 50,
-                                  height: 43,
-                                ),
-                              ),
-                              onPressed: () => removeItem(item, context),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return BlocBuilder<AppBloc, AppState>(
+      builder: (context, state) {
+        if (state is! AppLoaded) return const SizedBox();
+    
+        return Stack(
+          children: [
+            SingleChildScrollView(
+              padding: const EdgeInsets.only(top: 140),
+              child: Column(
+                children: [
+                  ListView.separated(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    itemCount: state.shoppingList.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (_, __) => const Gap(16),
+                    itemBuilder: (context, index) {
+                      final item = state.shoppingList[index];
+                      return Row(
                         children: [
-                          AppButton(
-                            width: getWidth(context, percent: 0.4),
-                            color: ButtonColors.red,
-                            onPressed: () => removeAll(context),
-                            widget: const Text('remove all'),
+                          Expanded(
+                            child: AppButton(
+                              color: ButtonColors.pink,
+                              widget: Row(
+                                children: [
+                                  Text(item.name),
+                                  Text(item.quantity),
+                                ],
+                              ),
+                            ),
                           ),
+                          const Gap(11),
                           AppButton(
-                            width: getWidth(context, percent: 0.4),
-                            color: ButtonColors.green,
-                            onPressed: () => removeAll(context),
-                            widget: const Text('buy all'),
+                            color: ButtonColors.blue,
+                            widget: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: AppIcon(
+                                asset: IconProvider.shop.buildImageUrl(),
+                                width: 50,
+                                height: 43,
+                              ),
+                            ),
+                            onPressed: () => removeItem(item, context),
+                          ),
+                          const Gap(11),
+                          AppButton(
+                            color: ButtonColors.red,
+                            widget: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: AppIcon(
+                                asset: IconProvider.remove.buildImageUrl(),
+                                width: 50,
+                                height: 43,
+                              ),
+                            ),
+                            onPressed: () => removeItem(item, context),
                           ),
                         ],
-                      ),
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        AppButton(
+                          width: getWidth(context, percent: 0.4),
+                          color: ButtonColors.red,
+                          onPressed: () => removeAll(context),
+                          widget: const Text('remove all'),
+                        ),
+                        AppButton(
+                          width: getWidth(context, percent: 0.4),
+                          color: ButtonColors.green,
+                          onPressed: () => removeAll(context),
+                          widget: const Text('buy all'),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              const AppBarWidget(
-                widgets: Text('Shopping List'),
-                hasBackButton: true,
-              ),
-            ],
-          );
-        },
-      ),
+            ),
+            const AppBarWidget(
+              widgets: Text('Shopping List'),
+              hasBackButton: true,
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -102,158 +102,155 @@ class _RecipeScreenState extends State<RecipeScreen> {
   Widget build(BuildContext context) {
     final step = widget.recipe.steps[currentStep];
 
-    return Material(
-      color: Colors.transparent,
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  itemCount: widget.recipe.ingredients.length,
-        
-                  separatorBuilder: (context, index) => const Gap(16),
-                  itemBuilder: (context, index) => Row(
-                    children: [
-                      AppButton(
-                        color: ButtonColors.pink,
-                        widget: Row(
-                          children: [
-                            Text(widget.recipe.ingredients[index].name),
-                            Text(widget.recipe.ingredients[index].quantity),
-                          ],
-                        ),
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                itemCount: widget.recipe.ingredients.length,
+      
+                separatorBuilder: (context, index) => const Gap(16),
+                itemBuilder: (context, index) => Row(
+                  children: [
+                    AppButton(
+                      color: ButtonColors.pink,
+                      widget: Row(
+                        children: [
+                          Text(widget.recipe.ingredients[index].name),
+                          Text(widget.recipe.ingredients[index].quantity),
+                        ],
                       ),
-                      AppButton(
-                        color: ButtonColors.blue,
-                        widget: AppIcon(
-                          asset: IconProvider.shop.buildImageUrl(),
-                          width: 50,
-                          height: 43,
-                        ),
-                        onPressed: () {
-                          context.read<AppBloc>().add(
-                                AddShoppingItemEvent(
-                                  ShoppingList(
-                                    id: const Uuid().v4(),
-                                    name: widget.recipe.ingredients[index].name,
-                                    quantity:
-                                        widget.recipe.ingredients[index].quantity,
-                                  ),
-                                ),
-                              );
-                          showCupertinoSnackBar(context,
-                              '${widget.recipe.ingredients[index].name}: Added to shopping list');
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                width: getWidth(context, percent: 0.7),
-                height: getHeight(context, percent: 0.4),
-        
-                child: DecoratedBox(
-                  decoration: ShapeDecoration(
-                    color: Color(0x7C2A004B),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(26),
                     ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Step ${currentStep + 1} of ${widget.recipe.steps.length}',
+                    AppButton(
+                      color: ButtonColors.blue,
+                      widget: AppIcon(
+                        asset: IconProvider.shop.buildImageUrl(),
+                        width: 50,
+                        height: 43,
                       ),
-                      const SizedBox(height: 8),
-                      Text(step.description),
-                      const SizedBox(height: 8),
-                      if (step.timer != null && step.timer! > 0)
-                        Row(
-                          children: [
-                            AppIcon(
-                              asset: IconProvider.time.buildImageUrl(),
-                              width: 73,
-                              height: 74,
-                            ),
-                            Text('$_timeLeft'),
-                          ],
-                        ),
-                    ],
-                  ),
+                      onPressed: () {
+                        context.read<AppBloc>().add(
+                              AddShoppingItemEvent(
+                                ShoppingList(
+                                  id: const Uuid().v4(),
+                                  name: widget.recipe.ingredients[index].name,
+                                  quantity:
+                                      widget.recipe.ingredients[index].quantity,
+                                ),
+                              ),
+                            );
+                        showCupertinoSnackBar(context,
+                            '${widget.recipe.ingredients[index].name}: Added to shopping list');
+                      },
+                    ),
+                  ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: AppIcon(
+            ),
+            Container(
+              width: getWidth(context, percent: 0.7),
+              height: getHeight(context, percent: 0.4),
+      
+              child: DecoratedBox(
+                decoration: ShapeDecoration(
+                  color: Color(0x7C2A004B),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(26),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Step ${currentStep + 1} of ${widget.recipe.steps.length}',
+                    ),
+                    const SizedBox(height: 8),
+                    Text(step.description),
+                    const SizedBox(height: 8),
+                    if (step.timer != null && step.timer! > 0)
+                      Row(
+                        children: [
+                          AppIcon(
+                            asset: IconProvider.time.buildImageUrl(),
+                            width: 73,
+                            height: 74,
+                          ),
+                          Text('$_timeLeft'),
+                        ],
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: AppIcon(
+                    asset: IconProvider.arrow.buildImageUrl(),
+                    width: 50,
+                    height: 43,
+                  ),
+                  onPressed: () {
+                    if (currentStep > 0) {
+                      setState(() {
+                        currentStep--;
+                      });
+                      _setupCurrentStepTimer();
+                    }
+                  },
+                ),
+                IconButton(
+                  icon: Transform.rotate(
+                    angle: 3.14,
+                    child: AppIcon(
                       asset: IconProvider.arrow.buildImageUrl(),
                       width: 50,
                       height: 43,
                     ),
-                    onPressed: () {
-                      if (currentStep > 0) {
-                        setState(() {
-                          currentStep--;
-                        });
-                        _setupCurrentStepTimer();
-                      }
-                    },
                   ),
-                  IconButton(
-                    icon: Transform.rotate(
-                      angle: 3.14,
-                      child: AppIcon(
-                        asset: IconProvider.arrow.buildImageUrl(),
-                        width: 50,
-                        height: 43,
-                      ),
-                    ),
-                    onPressed: _goToNextStep,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          AppBarWidget(
-            widgets: Row(
-              children: [
-                Text(widget.recipe.title),
-                IconButton(
-                  icon: AppIcon(
-                    asset: IconProvider.heart.buildImageUrl(),
-                    color: isFavorite ? null : Colors.grey,
-                    width: 33,
-                    height: 30,
-                  ),
-                  onPressed: () {
-                    context.read<AppBloc>().add(
-                          UpdateRecipeEvent(
-                            widget.recipe.copyWith(isFavorite: !isFavorite),
-                          ),
-                        );
-                    setState(() {
-                      isFavorite = !isFavorite;
-                    });
-                  },
-                ),
-                IconButton(
-                  icon: AppIcon(
-                    asset: IconProvider.share.buildImageUrl(),
-                    width: 32,
-                    height: 33,
-                  ),
-                  onPressed: _shareRecipe,
+                  onPressed: _goToNextStep,
                 ),
               ],
             ),
-            hasBackButton: true,
+          ],
+        ),
+        AppBarWidget(
+          widgets: Row(
+            children: [
+              Text(widget.recipe.title),
+              IconButton(
+                icon: AppIcon(
+                  asset: IconProvider.heart.buildImageUrl(),
+                  color: isFavorite ? null : Colors.grey,
+                  width: 33,
+                  height: 30,
+                ),
+                onPressed: () {
+                  context.read<AppBloc>().add(
+                        UpdateRecipeEvent(
+                          widget.recipe.copyWith(isFavorite: !isFavorite),
+                        ),
+                      );
+                  setState(() {
+                    isFavorite = !isFavorite;
+                  });
+                },
+              ),
+              IconButton(
+                icon: AppIcon(
+                  asset: IconProvider.share.buildImageUrl(),
+                  width: 32,
+                  height: 33,
+                ),
+                onPressed: _shareRecipe,
+              ),
+            ],
           ),
-        ],
-      ),
+          hasBackButton: true,
+        ),
+      ],
     );
   }
 }
