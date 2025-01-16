@@ -34,6 +34,19 @@ class AppButton extends StatelessWidget {
 
     return Material(
       key: globalKey,
+      textStyle: TextStyle(
+      fontFamily: 'Poetsen',
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+      color: Colors.white,
+      shadows: [
+        Shadow(
+          offset: Offset(2.0, 2.0), // Смещение тени
+          color: Color(0x80000000), // Цвет тени с прозрачностью
+          blurRadius: 4,
+        ),
+      ],
+    ),
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(radius),
       elevation: 5,
