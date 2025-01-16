@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 class GradientText extends StatelessWidget {
   final bool isCenter;
   const GradientText(
-      this.text, {
-        required this.fontSize,
-        this.isCenter = false,
-        super.key, this.gradientColors,
-      });
+    this.text, {
+    required this.fontSize,
+    this.isCenter = false,
+    super.key,
+    this.gradientColors,
+  });
 
   final String text;
   final double fontSize;
@@ -17,10 +18,11 @@ class GradientText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gradient = LinearGradient(
-      colors: gradientColors?? [
-        Color(0xFF4EE4FF),
-        Color(0xFF1989C5),
-      ],
+      colors: gradientColors ??
+          [
+            Color(0xFFFFE102),
+            Color(0xFFFCA400),
+          ],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
     );
@@ -31,16 +33,36 @@ class GradientText extends StatelessWidget {
           text,
           textAlign: isCenter ? TextAlign.center : null,
           style: TextStyle(
+            fontSize: fontSize,
+            shadows: [
+              Shadow(
+                offset: Offset(0, -2), // Смещение тени
+                color: Color(0xFFFE7D00), // Цвет тени с прозрачностью
+                blurRadius: 0,
+              ),
+            ],
+            fontWeight: FontWeight.w400,
+            fontFamily: 'Hugmate',
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 5
+              ..color = Color(0xFFCF6100),
+          ),
+        ),
+        Text(
+          text,
+          textAlign: isCenter ? TextAlign.center : null,
+          style: TextStyle(
             color: Colors.transparent,
             fontSize: fontSize,
-            fontFamily: 'Kizard',
             shadows: [
               Shadow(
                 offset: Offset(2.0, 2.0), // Смещение тени
-                color: Color(0x80000000), // Цвет тени с прозрачностью
-                blurRadius: 4.0, // Радиус размытия тени
+                color: Color(0x0), // Цвет тени с прозрачностью
+                blurRadius: 4,
               ),
             ],
+            fontFamily: 'Hugmate',
           ),
         ),
         ShaderMask(
@@ -52,9 +74,15 @@ class GradientText extends StatelessWidget {
             text,
             textAlign: isCenter ? TextAlign.center : null,
             style: TextStyle(
-              color: Color(0xFF1989C5),
               fontSize: fontSize,
-              fontFamily: 'Kizard',
+              shadows: [
+                Shadow(
+                  offset: Offset(2.0, 2.0), // Смещение тени
+                  color: Color(0x0), // Цвет тени с прозрачностью
+                  blurRadius: 4,
+                ),
+              ],
+              fontFamily: 'Hugmate',
             ),
           ),
         ),
@@ -83,7 +111,8 @@ class TextWithBorder extends StatelessWidget {
     this.textAlign,
     this.fontFamily,
     this.color,
-    this.overflow, this.height,
+    this.overflow,
+    this.height,
   });
 
   @override
@@ -107,7 +136,6 @@ class TextWithBorder extends StatelessWidget {
               ),
             ],
             fontFamily: fontFamily ?? 'Florida',
-
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = 5
@@ -125,7 +153,6 @@ class TextWithBorder extends StatelessWidget {
             letterSpacing: letterSpacing,
             fontFamily: fontFamily ?? 'Florida',
             color: color ?? Colors.white,
-
           ),
         ),
       ],

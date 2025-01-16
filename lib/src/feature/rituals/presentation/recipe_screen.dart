@@ -9,6 +9,7 @@ import 'package:candies/src/feature/rituals/model/recipe.dart';
 import 'package:candies/src/feature/rituals/model/shopping_list.dart';
 import 'package:candies/ui_kit/app_bar.dart';
 import 'package:candies/ui_kit/app_button.dart';
+import 'package:candies/ui_kit/gradient_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -85,33 +86,43 @@ class _RecipeScreenState extends State<RecipeScreen> {
                   backgroundColor: Colors.transparent,
                   insetPadding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                  child: AppButton(
-                    color: ButtonColors.purple,
-                    bottomPadding: 14,
-                    radius: 19,
-                    width: getWidth(context, percent: 0.8),
-                    height: getHeight(context, percent: 0.3),
-                    widget: Column(
-                      children: [
-                        const Text('CONGRATULATIONS!'),
-                        const Text('You have completed this recipe!'),
-                        _actions(context, () => setState(() {}), true),
-                        const Gap(16),
-                        TextButton(
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: AppButton(
+                          color: ButtonColors.purple,
+                          bottomPadding: 14,
+                          radius: 19,
+                          width: 314,
+                          height: 154,
+                          widget: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const GradientText('CONGRATULATIONS!', fontSize: 23, isCenter: true,),
+                              Gap(5),
+                              const Text('You have completed this recipe!'),
+                              _actions(context, () => setState(() {}), true),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 17,
+                        child: AppButton(
                           onPressed: () => context
                             ..pop()
                             ..pop(),
-                          child: AppButton(
-                            color: ButtonColors.blue,
-                            bottomPadding: 7,
-                            radius: 19,
-                            widget: const Text('back'),
-                            width: 142,
-                            height: 63,
-                          ),
+                          color: ButtonColors.blue,
+                          bottomPadding: 7,
+                          radius: 19,
+                          widget: const Text('back', style: TextStyle(fontSize: 26),),
+                          width: 142,
+                          height: 63,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ));
