@@ -19,10 +19,17 @@ class AppRoot extends StatelessWidget {
           primaryColor: Color(0xFFFF48A0),
           textTheme: CupertinoTextThemeData(
             textStyle: TextStyle(
-              fontFamily: 'Kastore',
+              fontFamily: 'Poetsen',
               fontWeight: FontWeight.w700,
               fontSize: 20,
               color: Colors.white,
+              shadows: [
+                Shadow(
+                  offset: Offset(2.0, 2.0), // Смещение тени
+                  color: Color(0x80000000), // Цвет тени с прозрачностью
+                  blurRadius: 4,
+                ),
+              ],
             ),
           ),
         ),
@@ -33,9 +40,9 @@ class AppRoot extends StatelessWidget {
               primarySwatch: Colors.pink,
               textTheme: TextTheme(
                 bodyLarge: TextStyle(
-                  fontFamily: 'Baloo Bhaijaan',
+                  fontFamily: 'Poetsen',
                   fontSize: 20,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
             ),

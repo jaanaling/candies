@@ -9,6 +9,7 @@ import 'package:candies/src/feature/rituals/bloc/app_bloc.dart';
 import 'package:candies/src/feature/rituals/model/recipe.dart';
 import 'package:candies/ui_kit/app_bar.dart';
 import 'package:candies/ui_kit/app_button.dart';
+import 'package:candies/ui_kit/gradient_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -214,21 +215,40 @@ class _HomeScreenState extends State<HomeScreen> {
     required bool isActive,
     required VoidCallback onTap,
   }) {
-    return AppButton(
-      color: isActive ? ButtonColors.purple : ButtonColors.darkPurple,
-      radius: 12,
-      height: 85,
-      width: getWidth(context, baseSize: 110),
-      onPressed: onTap,
-      widget: Stack(
-        alignment: AlignmentDirectional.bottomCenter,
+    return GestureDetector(
+      onTap: onTap,
+      child: Stack(
+        alignment: Alignment.topCenter,
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: AppButton(
+              color: isActive ? ButtonColors.purple : ButtonColors.darkPurple,
+              radius: 12,
+              height: 85,
+              width: getWidth(context, baseSize: 110),
+              onPressed: onTap,
+            widget: SizedBox(),
+            ),
+          ),
           AppIcon(
             asset: icon,
             width: 78,
             height: 72,
           ),
-          Text(label),
+          Positioned(
+            bottom: 11,
+            child: SizedBox(
+              width:  getWidth(context, baseSize: 110) - 23,
+              child: TextWithBorder(
+                text: label,
+                height: 0.5,
+                textAlign: TextAlign.center,
+                borderColor: Color(0xFF2F0058),
+                fontSize: 34,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -253,21 +273,19 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomPadding: 2,
           radius: 9,
           height: 55,
-          widget: Material(
-            color: Colors.transparent,
-            child: TextField(
-              decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 16, vertical: 4)),
-              style: const TextStyle(fontSize: 16, color: Colors.white),
-              onChanged: (value) {
-                setState(() {
-                  searchQuery = value;
-                  filteredRecipes(allRecipes);
-                });
-              },
+
+          widget: CupertinoTextField(
+            decoration: BoxDecoration(
+              color: Colors.transparent
             ),
+          placeholderStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+            placeholder: 'Search...',
+            onChanged: (value) {
+              setState(() {
+                searchQuery = value;
+                filteredRecipes(allRecipes);
+              });
+            },
           ),
         ),
         Gap(11),
@@ -339,6 +357,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ) -
                                 22,
                             height: 124,
+
                             widget: Padding(
                               padding: const EdgeInsets.fromLTRB(6, 6, 12, 6),
                               child: Row(
@@ -350,6 +369,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fit: BoxFit.cover,
                                   ),
                                   Gap(6),
+
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment:
@@ -358,6 +378,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
+
                                           children: [
                                             Text(recipe.title),
                                             IconButton(
