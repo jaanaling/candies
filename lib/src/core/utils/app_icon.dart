@@ -9,6 +9,7 @@ class AppIcon extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxFit fit;
+  final BlendMode? blendMode;
 
   const AppIcon({
     super.key,
@@ -17,6 +18,7 @@ class AppIcon extends StatelessWidget {
     this.width,
     this.height,
     this.fit = BoxFit.contain,
+    this.blendMode,
   });
 
   @override
@@ -35,7 +37,7 @@ class AppIcon extends StatelessWidget {
               colorFilter: color != null
                   ? ColorFilter.mode(
                       color!,
-                      BlendMode.srcIn,
+                      blendMode ?? BlendMode.srcIn,
                     )
                   : null,
             ),
@@ -47,7 +49,7 @@ class AppIcon extends StatelessWidget {
                 height: height,
                 fit: fit,
                 color: color,
-                colorBlendMode: color != null ? BlendMode.srcIn : null,
+                colorBlendMode: color != null ? blendMode?? BlendMode.srcIn : null,
               )
             : Image.file(
                 File(asset),

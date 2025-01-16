@@ -86,26 +86,28 @@ class _RecipeScreenState extends State<RecipeScreen> {
                   insetPadding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                   child: AppButton(
-                    color: ButtonColors.green,
-                    widget: SizedBox(
-                      width: getWidth(context, percent: 0.8),
-                      height: getHeight(context, percent: 0.3),
-                      child: Column(
-                        children: [
-                          const Text('CONGRATULATIONS!'),
-                          const Text('You have completed this recipe!'),
-                          _actions(context, () => setState(() {}), true),
-                          const Gap(16),
-                          TextButton(
-                            onPressed: () => context
-                              ..pop()
-                              ..pop(),
-                            child: AppButton(
-                                color: ButtonColors.blue,
-                                widget: const Text('back')),
-                          ),
-                        ],
-                      ),
+                    color: ButtonColors.purple,
+                    bottomPadding: 14,
+                    radius: 19,
+                    width: getWidth(context, percent: 0.8),
+                    height: getHeight(context, percent: 0.3),
+                    widget: Column(
+                      children: [
+                        const Text('CONGRATULATIONS!'),
+                        const Text('You have completed this recipe!'),
+                        _actions(context, () => setState(() {}), true),
+                        const Gap(16),
+                        TextButton(
+                          onPressed: () => context
+                            ..pop()
+                            ..pop(),
+                          child: AppButton(
+                              color: ButtonColors.blue,
+                              bottomPadding: 7,
+                              radius: 19,
+                              widget: const Text('back'), width: 142, height: 63,),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -155,7 +157,11 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 itemBuilder: (context, index) => Row(
                   children: [
                     AppButton(
-                      color: ButtonColors.pink,
+                      bottomPadding: 6,
+                      color: ButtonColors.purple,
+                      width:
+                      getWidth(context, percent: 1) - 16 - 11 - 61,
+                      height: 87,
                       widget: Row(
                         children: [
                           Text(widget.recipe.ingredients[index].name),
@@ -165,6 +171,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     ),
                     AppButton(
                       color: ButtonColors.blue,
+                        width: 61,
+                        height: 61,
+                      bottomPadding: 5,
                       widget: AppIcon(
                         asset: IconProvider.shop.buildImageUrl(),
                         width: 50,

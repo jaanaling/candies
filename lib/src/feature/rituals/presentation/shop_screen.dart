@@ -25,7 +25,7 @@ class ShopScreen extends StatelessWidget {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         if (state is! AppLoaded) return const SizedBox();
-    
+
         return Stack(
           children: [
             SingleChildScrollView(
@@ -42,40 +42,42 @@ class ShopScreen extends StatelessWidget {
                       final item = state.shoppingList[index];
                       return Row(
                         children: [
-                          Expanded(
-                            child: AppButton(
-                              color: ButtonColors.pink,
-                              widget: Row(
-                                children: [
-                                  Text(item.name),
-                                  Text(item.quantity),
-                                ],
-                              ),
+                          AppButton(
+                            bottomPadding: 6,
+                            color: ButtonColors.purple,
+                            widget: Row(
+                              children: [
+                                Text(item.name),
+                                Text(item.quantity),
+                              ],
                             ),
+                            width:
+                                getWidth(context, percent: 1) - 16 - 22 - 140,
+                            height: 87,
                           ),
                           const Gap(11),
                           AppButton(
                             color: ButtonColors.blue,
-                            widget: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: AppIcon(
-                                asset: IconProvider.shop.buildImageUrl(),
-                                width: 50,
-                                height: 43,
-                              ),
+                            bottomPadding: 5,
+                            widget: AppIcon(
+                              asset: IconProvider.shop.buildImageUrl(),
+                              width: 50,
+                              height: 43,
                             ),
                             onPressed: () => removeItem(item, context),
+                            width: 61,
+                            height: 61,
                           ),
                           const Gap(11),
                           AppButton(
                             color: ButtonColors.red,
-                            widget: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: AppIcon(
-                                asset: IconProvider.remove.buildImageUrl(),
-                                width: 50,
-                                height: 43,
-                              ),
+                            width: 61,
+                            height: 61,
+                            bottomPadding: 5,
+                            widget: AppIcon(
+                              asset: IconProvider.remove.buildImageUrl(),
+                              width: 50,
+                              height: 43,
                             ),
                             onPressed: () => removeItem(item, context),
                           ),
@@ -93,9 +95,13 @@ class ShopScreen extends StatelessWidget {
                           color: ButtonColors.red,
                           onPressed: () => removeAll(context),
                           widget: const Text('remove all'),
+                          height: 80,
+                          bottomPadding: 8,
                         ),
                         AppButton(
                           width: getWidth(context, percent: 0.4),
+                          height: 80,
+                          bottomPadding: 8,
                           color: ButtonColors.green,
                           onPressed: () => removeAll(context),
                           widget: const Text('buy all'),

@@ -17,17 +17,30 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppButton(
-      color: ButtonColors.pink,
-      radius: 0,
-      widget: SizedBox(
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.00, -1.00),
+          end: Alignment(0, 1),
+          colors: [Color(0xFF9633FF), Color(0xFF6B08E0)],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x28000000),
+            blurRadius: 0,
+            offset: Offset(0, 4),
+            spreadRadius: 0,
+          )
+        ],
+      ),
+      child: SizedBox(
         width: getWidth(context, percent: 1),
-        height: getHeight(context, percent: 0.14) ,
         child: Padding(
           padding: EdgeInsets.only(
             left: 10,
             right: 10,
             top: MediaQuery.of(context).padding.top,
+            bottom: 12
           ),
           child: Row(
             children: [
@@ -37,6 +50,7 @@ class AppBarWidget extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
+                      borderRadius: BorderRadius.circular(32),
                       onTap: () {
                         context.pop();
                       },

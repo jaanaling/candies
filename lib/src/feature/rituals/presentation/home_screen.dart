@@ -215,22 +215,21 @@ class _HomeScreenState extends State<HomeScreen> {
     required VoidCallback onTap,
   }) {
     return AppButton(
-      color: isActive ? ButtonColors.red : ButtonColors.pink,
+      color: isActive ? ButtonColors.purple : ButtonColors.darkPurple,
       radius: 12,
+      height: 85,
+      width: getWidth(context, baseSize: 110),
       onPressed: onTap,
-      widget: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            AppIcon(
-              asset: icon,
-              width: 78,
-              height: 72,
-            ),
-            Text(label),
-          ],
-        ),
+      widget: Stack(
+        alignment: AlignmentDirectional.bottomCenter,
+        children: [
+          AppIcon(
+            asset: icon,
+            width: 78,
+            height: 72,
+          ),
+          Text(label),
+        ],
       ),
     );
   }
@@ -248,20 +247,28 @@ class _HomeScreenState extends State<HomeScreen> {
             showFilterPopup();
           },
         ),
-        SizedBox(
-          width: getWidth(context, percent: 0.7),
-          child: TextField(
-            decoration: const InputDecoration(
-              hintText: 'Search...',
+        AppButton(
+          color: ButtonColors.deepPurple,
+          width: getWidth(context, percent: 1) - 141,
+          bottomPadding: 2,
+          radius: 9,
+          height: 55,
+         widget: Material(
+            color: Colors.transparent,
+            child: TextField(
+              decoration: const InputDecoration(
+                hintText: 'Search...',
+              ),
+              onChanged: (value) {
+                setState(() {
+                  searchQuery = value;
+                  filteredRecipes(allRecipes);
+                });
+              },
             ),
-            onChanged: (value) {
-              setState(() {
-                searchQuery = value;
-                filteredRecipes(allRecipes);
-              });
-            },
           ),
         ),
+        Gap(11),
         buildCartIcon(count),
       ],
     );
@@ -303,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         if (state is! AppLoaded) return const SizedBox();
-    
+
         return Stack(
           children: [
             SingleChildScrollView(
@@ -319,11 +326,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       separatorBuilder: (context, index) => Gap(17),
                       itemBuilder: (context, index) {
                         final recipe = filteredRecipes(state.recipes)[index];
-    
+
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 11),
                           child: AppButton(
-                            color: ButtonColors.blue,
+                            color: ButtonColors.purple,
+                            width: getWidth(context, percent: 1, ) - 22,
+                            height: 111,
                             widget: Padding(
                               padding: const EdgeInsets.fromLTRB(6, 6, 12, 6),
                               child: Row(
@@ -336,22 +345,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   Gap(6),
                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(recipe.title),
                                       Gap(13),
-                                      Row(
-                                        children: [
-                                          for (int i = 0; i < 5; i++)
-                                            AppIcon(
-                                              asset: IconProvider.bombres
-                                                  .buildImageUrl(),
-                                              color: i < recipe.difficulty
-                                                  ? null
-                                                  : Colors.grey,
-                                              width: 21,
-                                              height: 21,
-                                            ),
-                                        ],
+                                      AppButton(
+
+                                        color: ButtonColors.deepPurple,
+                                        height: 31,
+                                        width: 121,
+                                        radius: 6,
+                                        bottomPadding: 1,
+                                        widget: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            for (int i = 0; i < 5; i++)
+                                              AppIcon(
+                                                asset: IconProvider.bombres
+                                                    .buildImageUrl(),
+                                                color: i < recipe.difficulty
+                                                    ? null
+                                                    : Colors.black.withOpacity(0.5),
+                                                blendMode: BlendMode.srcATop,
+                                                width: 21,
+                                                height: 21,
+                                              ),
+                                          ],
+                                        ),
                                       ),
                                       Gap(10),
                                       if (recipe.isCompleted)
@@ -363,11 +383,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Spacer(),
                                   IconButton(
                                     icon: AppIcon(
-                                      asset:
-                                          IconProvider.heart.buildImageUrl(),
+                                      asset: IconProvider.heart.buildImageUrl(),
                                       color: recipe.isFavorite
                                           ? null
-                                          : Colors.grey,
+                                          :    Colors.black.withOpacity(0.5),
+                                    blendMode: BlendMode.srcATop,
                                       width: 33,
                                       height: 30,
                                     ),

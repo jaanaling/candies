@@ -1,125 +1,215 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:inner_glow/inner_glow.dart';
 
 class AppButton extends StatelessWidget {
   final ButtonColors color;
   final Widget widget;
   final VoidCallback? onPressed;
   final double radius;
-  final double? width;
+  final bool isRound;
+  final double width;
+  final double height;
+  final double topPadding;
+  final double bottomPadding;
+  final GlobalKey? globalKey;
 
   const AppButton({
     super.key,
     required this.color,
     required this.widget,
     this.onPressed,
-    this.radius = 19,
-    this.width,
+    this.radius = 14,
+    required this.width,
+    this.isRound = false,
+    this.globalKey,
+    this.topPadding = 4,
+    this.bottomPadding = 4,
+    required this.height,
   });
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyleConfig styleConfig = _getButtonStyleConfig(color);
+
     return Material(
+      key: globalKey,
       color: Colors.transparent,
+      borderRadius: BorderRadius.circular(radius),
+      elevation: 5,
       child: InkWell(
         onTap: onPressed,
         borderRadius: BorderRadius.circular(radius),
-        splashColor: color == ButtonColors.green
-            ? const Color(0xFFa2fb6d)
-            : color == ButtonColors.blue
-                ? const Color(0xFF6dbbfb)
-                : color == ButtonColors.lightBlue
-                    ? const Color(0xFF6df7eb)
-                    : color == ButtonColors.red
-                        ? const Color(0xFFfb6d6d)
-                        : const Color(0xFFf86dac),
+        splashColor: styleConfig.splashColor,
         child: Ink(
           width: width,
           decoration: ShapeDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                color == ButtonColors.green
-                    ? const Color(0xFFa2fb6d)
-                    : color == ButtonColors.blue
-                        ? const Color(0xFF6dbbfb)
-                        : color == ButtonColors.lightBlue
-                            ? const Color(0xFF6df7eb)
-                            : color == ButtonColors.red
-                                ? const Color(0xFFfb6d6d)
-                                : const Color(0xFFf86dac),
-                color == ButtonColors.green
-                    ? const Color(0xFF23a909)
-                    : color == ButtonColors.blue
-                        ? const Color(0xFF076ea8)
-                        : color == ButtonColors.lightBlue
-                            ? const Color(0xFF0765a8)
-                            : color == ButtonColors.red
-                                ? const Color(0xFFa20707)
-                                : const Color(0xFFad086c),
-              ],
-            ),
+            gradient: styleConfig.outerGradient,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                width: 0,
+                width: 2,
                 strokeAlign: BorderSide.strokeAlignOutside,
-                color: color == ButtonColors.green
-                    ? const Color(0xFF00590A)
-                    : color == ButtonColors.blue
-                        ? const Color(0xFF003C59)
-                        : color == ButtonColors.lightBlue
-                            ? const Color(0xFF003459)
-                            : color == ButtonColors.red
-                                ? const Color(0xFF590000)
-                                : const Color(0xFF590027),
+                color: styleConfig.borderColor,
               ),
               borderRadius: BorderRadius.circular(radius),
             ),
-            shadows: const [
-              BoxShadow(
-                color: Color(0x3F000000),
-                blurRadius: 4,
-                offset: Offset(0, 4),
-              ),
-            ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Ink(
+            padding: EdgeInsets.only(
+              top: styleConfig.needsTop ? topPadding : 0,
+              bottom: bottomPadding,
+            ),
+            child: InnerGlow(
               width: width,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: color == ButtonColors.green
-                      ? [const Color(0xFF6FFB18), const Color(0xFF2BC408)]
-                      : color == ButtonColors.blue
-                          ? [const Color(0xFF1894FB), const Color(0xFF088BC4)]
-                          : color == ButtonColors.lightBlue
-                              ? [
-                                  const Color(0xFF18FBE0),
-                                  const Color(0xFF0875C4)
-                                ]
-                              : color == ButtonColors.red
-                                  ? [
-                                      const Color(0xFFFB1818),
-                                      const Color(0xFFC40808),
-                                    ]
-                                  : [
-                                      const Color(0xFFF8187B),
-                                      const Color(0xFFC90A7F),
-                                    ],
-                ),
+              height: height,
+              glowRadius: radius,
+              thickness: 10,
+              glowBlur: 5,
+              strokeLinearGradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: color == ButtonColors.deepPurple
+                    ? [Colors.black.withOpacity(0.25), Colors.transparent]
+                    : [Color(0x30FFFFFF), Color(0x30FFFFFF)],
+              ),
+              baseDecoration: BoxDecoration(
+                gradient: styleConfig.innerGradient,
                 borderRadius: BorderRadius.circular(radius),
               ),
-              child: widget,
+              child: Center(child: widget),
             ),
           ),
         ),
       ),
     );
   }
+
+  ButtonStyleConfig _getButtonStyleConfig(ButtonColors color) {
+    switch (color) {
+      case ButtonColors.red:
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFFFFBBBB),
+          borderColor: Colors.transparent,
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFFFBBBB), Color(0xFF8a0100)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFFF5E5E), Color(0xFFB80000)],
+          ),
+        );
+      case ButtonColors.purple:
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFFFFC8F1),
+          borderColor: Colors.transparent,
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFFFC8F1), Color(0xFF8d00d8)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFF98FE2), Color(0xFFAC28F5)],
+          ),
+        );
+      case ButtonColors.green:
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFFBBFFC7),
+          borderColor: Colors.transparent,
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFBBFFC7), Color(0xFF03700e)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF5EFF5E), Color(0xFF2F8900)],
+          ),
+        );
+      case ButtonColors.blue:
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFF8DF7FB),
+          borderColor: Colors.transparent,
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF8DF7FB), Color(0xFF056eff)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF15F2FF), Color(0xFF10A9FF)],
+          ),
+        );
+      case ButtonColors.deepPurple:
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFFEC8AFF),
+          borderColor: Colors.transparent,
+          needsTop: false,
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFEC8AFF), Color(0xFFEC8AFF)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF680199), Color(0xFF680199)],
+          ),
+        );
+      case ButtonColors.darkPurple:
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFFBB7FC9),
+          borderColor: Colors.transparent,
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFA67FE9), Color(0xFF3d005c)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF6E00A1), Color(0xFF580089)],
+          ),
+        );
+      default:
+        // Для остальных вариантов
+        return const ButtonStyleConfig(
+          splashColor: Color(0xFFf86dac),
+          borderColor: Color(0xFF590027),
+          outerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFf86dac), Color(0xFFad086c)],
+          ),
+          innerGradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFF8187B), Color(0xFFC90A7F)],
+          ),
+        );
+    }
+  }
 }
 
-enum ButtonColors { green, red, blue, lightBlue, pink }
+class ButtonStyleConfig {
+  final Color splashColor;
+  final Color borderColor;
+  final LinearGradient outerGradient;
+  final LinearGradient innerGradient;
+  final bool needsTop;
+
+  const ButtonStyleConfig(
+      {required this.splashColor,
+      required this.borderColor,
+      required this.outerGradient,
+      required this.innerGradient,
+      this.needsTop = true});
+}
+
+enum ButtonColors { purple, darkPurple, deepPurple, red, green, blue }
