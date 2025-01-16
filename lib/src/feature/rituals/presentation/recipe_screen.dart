@@ -154,47 +154,51 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, index) => const Gap(16),
-                itemBuilder: (context, index) => Row(
-                  children: [
-                    AppButton(
-                      bottomPadding: 6,
-                      color: ButtonColors.purple,
-                      width:
-                      getWidth(context, percent: 1) - 16 - 11 - 61,
-                      height: 87,
-                      widget: Row(
-                        children: [
-                          Text(widget.recipe.ingredients[index].name),
-                          Text(widget.recipe.ingredients[index].quantity),
-                        ],
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AppButton(
+                        bottomPadding: 6,
+                        color: ButtonColors.purple,
+                        width:
+                        getWidth(context, percent: 1) - 16 - 11 - 61 - 40,
+                        height: 87,
+                        widget: Row(
+                          children: [
+                            Text(widget.recipe.ingredients[index].name),
+                            Text(widget.recipe.ingredients[index].quantity),
+                          ],
+                        ),
                       ),
-                    ),
-                    AppButton(
-                      color: ButtonColors.blue,
-                        width: 61,
-                        height: 61,
-                      bottomPadding: 5,
-                      widget: AppIcon(
-                        asset: IconProvider.shop.buildImageUrl(),
-                        width: 50,
-                        height: 43,
-                      ),
-                      onPressed: () {
-                        context.read<AppBloc>().add(
-                              AddShoppingItemEvent(
-                                ShoppingList(
-                                  id: const Uuid().v4(),
-                                  name: widget.recipe.ingredients[index].name,
-                                  quantity:
-                                      widget.recipe.ingredients[index].quantity,
+                      AppButton(
+                        color: ButtonColors.blue,
+                          width: 61,
+                          height: 61,
+                        bottomPadding: 5,
+                        widget: AppIcon(
+                          asset: IconProvider.shop.buildImageUrl(),
+                          width: 50,
+                          height: 43,
+                        ),
+                        onPressed: () {
+                          context.read<AppBloc>().add(
+                                AddShoppingItemEvent(
+                                  ShoppingList(
+                                    id: const Uuid().v4(),
+                                    name: widget.recipe.ingredients[index].name,
+                                    quantity:
+                                        widget.recipe.ingredients[index].quantity,
+                                  ),
                                 ),
-                              ),
-                            );
-                        showCupertinoSnackBar(context,
-                            '${widget.recipe.ingredients[index].name}: Added to shopping list');
-                      },
-                    ),
-                  ],
+                              );
+                          showCupertinoSnackBar(context,
+                              '${widget.recipe.ingredients[index].name}: Added to shopping list');
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Gap(30),
@@ -304,7 +308,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
         IconButton(
           icon: AppIcon(
             asset: IconProvider.heart.buildImageUrl(),
-            color: isFavorite ? null : Colors.grey,
+            color: isFavorite ? null : Colors.black
+                                                        .withOpacity(0.5), blendMode: BlendMode.srcATop,
             width: 33,
             height: 30,
           ),

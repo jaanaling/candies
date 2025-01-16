@@ -253,12 +253,14 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomPadding: 2,
           radius: 9,
           height: 55,
-         widget: Material(
+          widget: Material(
             color: Colors.transparent,
             child: TextField(
               decoration: const InputDecoration(
-                hintText: 'Search...',
-              ),
+                  border: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 16, vertical: 4)),
+              style: const TextStyle(fontSize: 16, color: Colors.white),
               onChanged: (value) {
                 setState(() {
                   searchQuery = value;
@@ -331,8 +333,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 11),
                           child: AppButton(
                             color: ButtonColors.purple,
-                            width: getWidth(context, percent: 1, ) - 22,
-                            height: 111,
+                            width: getWidth(
+                                  context,
+                                  percent: 1,
+                                ) -
+                                22,
+                            height: 124,
                             widget: Padding(
                               padding: const EdgeInsets.fromLTRB(6, 6, 12, 6),
                               child: Row(
@@ -344,56 +350,90 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fit: BoxFit.cover,
                                   ),
                                   Gap(6),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(recipe.title),
-                                      Gap(13),
-                                      AppButton(
-
-                                        color: ButtonColors.deepPurple,
-                                        height: 31,
-                                        width: 121,
-                                        radius: 6,
-                                        bottomPadding: 1,
-                                        widget: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            for (int i = 0; i < 5; i++)
-                                              AppIcon(
-                                                asset: IconProvider.bombres
+                                            Text(recipe.title),
+                                            IconButton(
+                                              alignment: Alignment.centerRight,
+                                              iconSize: 33,
+                                              padding: EdgeInsets.zero,
+                                              icon: AppIcon(
+                                                fit: BoxFit.cover,
+                                                asset: IconProvider.heart
                                                     .buildImageUrl(),
-                                                color: i < recipe.difficulty
+                                                color: recipe.isFavorite
                                                     ? null
-                                                    : Colors.black.withOpacity(0.5),
+                                                    : Colors.black
+                                                        .withOpacity(0.5),
                                                 blendMode: BlendMode.srcATop,
-                                                width: 21,
-                                                height: 21,
+                                                width: 33,
+                                                height: 30,
                                               ),
+                                              onPressed: () {
+                                                toggleFavorite(recipe);
+                                              },
+                                            ),
                                           ],
                                         ),
-                                      ),
-                                      Gap(10),
-                                      if (recipe.isCompleted)
-                                        const Text('done')
-                                      else
-                                        const Text('in progress'),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  IconButton(
-                                    icon: AppIcon(
-                                      asset: IconProvider.heart.buildImageUrl(),
-                                      color: recipe.isFavorite
-                                          ? null
-                                          :    Colors.black.withOpacity(0.5),
-                                    blendMode: BlendMode.srcATop,
-                                      width: 33,
-                                      height: 30,
+                                        AppButton(
+                                          color: ButtonColors.deepPurple,
+                                          height: 31,
+                                          width: 121,
+                                          radius: 6,
+                                          bottomPadding: 1,
+                                          widget: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              for (int i = 0; i < 5; i++)
+                                                AppIcon(
+                                                  asset: IconProvider.bombres
+                                                      .buildImageUrl(),
+                                                  color: i < recipe.difficulty
+                                                      ? null
+                                                      : Colors.black
+                                                          .withOpacity(0.5),
+                                                  blendMode: BlendMode.srcATop,
+                                                  width: 21,
+                                                  height: 21,
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                        Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              if (recipe.isCompleted)
+                                                const Text('done')
+                                              else
+                                                const Text('in progress'),
+                                              Gap(6),
+                                              AppButton(
+                                                  radius: 6,
+                                                  topPadding: 0,
+                                                  bottomPadding: 0,
+                                                  color:
+                                                      ButtonColors.deepPurple,
+                                                  widget: recipe.isCompleted
+                                                      ? Icon(
+                                                          CupertinoIcons
+                                                              .check_mark,
+                                                          color: const Color(
+                                                              0xFFF285E5))
+                                                      : SizedBox(),
+                                                  width: 32,
+                                                  height: 32)
+                                            ])
+                                      ],
                                     ),
-                                    onPressed: () {
-                                      toggleFavorite(recipe);
-                                    },
                                   ),
                                 ],
                               ),

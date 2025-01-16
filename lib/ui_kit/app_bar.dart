@@ -39,7 +39,7 @@ class AppBarWidget extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 10,
             right: 10,
-            top: MediaQuery.of(context).padding.top,
+            top: MediaQuery.of(context).padding.top +10,
             bottom: 12
           ),
           child: Row(
