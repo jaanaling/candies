@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 85,
               width: getWidth(context, baseSize: 110),
               onPressed: onTap,
-            widget: SizedBox(),
+              widget: SizedBox(),
             ),
           ),
           AppIcon(
@@ -239,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             bottom: 11,
             child: SizedBox(
-              width:  getWidth(context, baseSize: 110) - 23,
+              width: getWidth(context, baseSize: 110) - 23,
               child: TextWithBorder(
                 text: label,
                 height: 0.5,
@@ -273,12 +273,9 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomPadding: 2,
           radius: 9,
           height: 55,
-
           widget: CupertinoTextField(
-            decoration: BoxDecoration(
-              color: Colors.transparent
-            ),
-          placeholderStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+            decoration: BoxDecoration(color: Colors.transparent),
+            placeholderStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
             placeholder: 'Search...',
             onChanged: (value) {
               setState(() {
@@ -357,7 +354,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ) -
                                 22,
                             height: 124,
-
                             widget: Padding(
                               padding: const EdgeInsets.fromLTRB(6, 6, 12, 6),
                               child: Row(
@@ -369,7 +365,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fit: BoxFit.cover,
                                   ),
                                   Gap(6),
-
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment:
@@ -378,9 +373,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
-
                                           children: [
-                                            Text(recipe.title),
+                                            SizedBox(
+                                                width: getWidth(
+                                                  context,
+                                                  percent: 0.5,
+                                                ),
+                                                child: FittedBox(
+                                                    fit: BoxFit.scaleDown,
+                                                    child: Text(recipe.title))),
                                             IconButton(
                                               alignment: Alignment.centerRight,
                                               iconSize: 33,
@@ -491,17 +492,44 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 child: Column(
                                   children: [
-                                    if (recipe.isLocked)
-                                      Image.asset(
-                                        IconProvider.lock.buildImageUrl(),
-                                      )
-                                    else
-                                      Text(
-                                        recipe.isCompleted
-                                            ? 'done'
-                                            : 'in progress',
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: Row(
+                                        children: [
+                                          Spacer(),
+                                          if (recipe.isLocked)
+                                            Image.asset(
+                                              IconProvider.lock.buildImageUrl(),
+                                            )
+                                          else
+                                            AppButton(
+                                                radius: 6,
+                                                topPadding: 0,
+                                                bottomPadding: 0,
+                                                color: ButtonColors.deepPurple,
+                                                widget: recipe.isCompleted
+                                                    ? Icon(
+                                                        CupertinoIcons.check_mark,
+                                                        color: const Color(
+                                                            0xFFF285E5))
+                                                    : SizedBox(),
+                                                width: 32,
+                                                height: 32),
+                                          Gap(11)
+                                        ],
                                       ),
-                                    Text(recipe.title),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 9),
+                                      child: TextWithBorder(
+                                        text: recipe.title,
+                                        borderColor: Color(0xFF2F0058),
+                                        fontSize:
+                                            recipe.title.length > 27 ? 13 : 16,
+                                        fontFamily: 'Poetsen',
+                                      ),
+                                    ),
                                     if (recipe.isLocked == false)
                                       Row(
                                         children: [

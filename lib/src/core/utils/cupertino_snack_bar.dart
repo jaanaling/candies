@@ -38,14 +38,23 @@ class _CupertinoSnackBar extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.8,
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
         decoration: BoxDecoration(
-          color: CupertinoColors.systemGrey.withOpacity(0.9),
+          color: Colors.pink.withOpacity(0.9),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Text(
           message,
-          style: const TextStyle(
-            color: CupertinoColors.white,
-            fontSize: 16.0,
+          style: TextStyle(
+            fontFamily: 'Poetsen',
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                offset: Offset(2.0, 2.0), // Смещение тени
+                color: Color(0x80000000), // Цвет тени с прозрачностью
+                blurRadius: 4,
+              ),
+            ],
           ),
           textAlign: TextAlign.center,
         ),
