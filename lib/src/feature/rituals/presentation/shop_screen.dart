@@ -1,5 +1,6 @@
 import 'package:candies/src/core/utils/app_icon.dart';
 import 'package:candies/src/core/utils/icon_provider.dart';
+import 'package:candies/src/core/utils/size_utils.dart';
 import 'package:candies/src/feature/rituals/bloc/app_bloc.dart';
 import 'package:candies/src/feature/rituals/model/shopping_list.dart';
 import 'package:candies/ui_kit/app_bar.dart';
@@ -29,40 +30,54 @@ class ShopScreen extends StatelessWidget {
 
           return Stack(
             children: [
-              Column(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
+              SingleChildScrollView(
+                padding: const EdgeInsets.only(top: 140),
+                child: Column(
+                  children: [
+                    ListView.separated(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       itemCount: state.shoppingList.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (_, __) => const Gap(16),
                       itemBuilder: (context, index) {
                         final item = state.shoppingList[index];
                         return Row(
                           children: [
-                            AppButton(
-                              color: ButtonColors.pink,
-                              widget: Row(
-                                children: [
-                                  Text(item.name),
-                                  Text(item.quantity),
-                                ],
+                            Expanded(
+                              child: AppButton(
+                                color: ButtonColors.pink,
+                                widget: Row(
+                                  children: [
+                                    Text(item.name),
+                                    Text(item.quantity),
+                                  ],
+                                ),
                               ),
                             ),
+                            const Gap(11),
                             AppButton(
                               color: ButtonColors.blue,
-                              widget: AppIcon(
-                                asset: IconProvider.shop.buildImageUrl(),
-                                width: 50,
-                                height: 43,
+                              widget: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: AppIcon(
+                                  asset: IconProvider.shop.buildImageUrl(),
+                                  width: 50,
+                                  height: 43,
+                                ),
                               ),
                               onPressed: () => removeItem(item, context),
                             ),
+                            const Gap(11),
                             AppButton(
                               color: ButtonColors.red,
-                              widget: AppIcon(
-                                asset: IconProvider.remove.buildImageUrl(),
-                                width: 33,
-                                height: 30,
+                              widget: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: AppIcon(
+                                  asset: IconProvider.remove.buildImageUrl(),
+                                  width: 50,
+                                  height: 43,
+                                ),
                               ),
                               onPressed: () => removeItem(item, context),
                             ),
@@ -70,26 +85,28 @@ class ShopScreen extends StatelessWidget {
                         );
                       },
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        AppButton(
-                          color: ButtonColors.red,
-                          onPressed: () => removeAll(context),
-                          widget: const Text('remove all'),
-                        ),
-                        AppButton(
-                          color: ButtonColors.green,
-                          onPressed: () => removeAll(context),
-                          widget: const Text('buy all'),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          AppButton(
+                            width: getWidth(context, percent: 0.4),
+                            color: ButtonColors.red,
+                            onPressed: () => removeAll(context),
+                            widget: const Text('remove all'),
+                          ),
+                          AppButton(
+                            width: getWidth(context, percent: 0.4),
+                            color: ButtonColors.green,
+                            onPressed: () => removeAll(context),
+                            widget: const Text('buy all'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const AppBarWidget(
                 widgets: Text('Shopping List'),
