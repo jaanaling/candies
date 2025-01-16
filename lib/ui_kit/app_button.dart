@@ -1,65 +1,124 @@
 import 'package:flutter/cupertino.dart';
-
-enum ButtonColors { blue, green }
+import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
   final ButtonColors color;
-  final Widget child;
-  final Color? overlayColor;
+  final Widget widget;
+  final VoidCallback? onPressed;
   final double radius;
-  final bool needsWrap;
-  const AppButton(
-      {super.key, required this.color, required this.child, this.overlayColor, this.radius = 2.5, this.needsWrap = true});
+  final double? width;
+
+  const AppButton({
+    super.key,
+    required this.color,
+    required this.widget,
+    this.onPressed,
+    this.radius = 19,
+    this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        gradient: LinearGradient(
-          colors: color == ButtonColors.blue
-              ? [
-                  Color(0xFF070041),
-                  Color(0xFF00EEFF),
-                  Color(0xFF04003B),
-                ]
-              : [
-                  Color(0xFF004100),
-                  Color(0xFF0DFF00),
-                  Color(0xFF003B0B),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(radius),
+        splashColor: color == ButtonColors.green
+            ? const Color(0xFFa2fb6d)
+            : color == ButtonColors.blue
+                ? const Color(0xFF6dbbfb)
+                : color == ButtonColors.lightBlue
+                    ? const Color(0xFF6df7eb)
+                    : color == ButtonColors.red
+                        ? const Color(0xFFfb6d6d)
+                        : const Color(0xFFf86dac),
+        // onPressed: onPressed,
+        // padding: EdgeInsets.zero,
+        child: Padding(
+          padding: const EdgeInsets.all(2),
+          child: Ink(
+            width: width,
+            decoration: ShapeDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  color == ButtonColors.green
+                      ? const Color(0xFFa2fb6d)
+                      : color == ButtonColors.blue
+                          ? const Color(0xFF6dbbfb)
+                          : color == ButtonColors.lightBlue
+                              ? const Color(0xFF6df7eb)
+                              : color == ButtonColors.red
+                                  ? const Color(0xFFfb6d6d)
+                                  : const Color(0xFFf86dac),
+                  color == ButtonColors.green
+                      ? const Color(0xFF23a909)
+                      : color == ButtonColors.blue
+                          ? const Color(0xFF076ea8)
+                          : color == ButtonColors.lightBlue
+                              ? const Color(0xFF0765a8)
+                              : color == ButtonColors.red
+                                  ? const Color(0xFFa20707)
+                                  : const Color(0xFFad086c),
                 ],
-          stops: [0, 0.55, 1],
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(needsWrap?4:0),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            gradient: RadialGradient(
-              radius: radius,
-              focal: Alignment.topCenter,
-              colors: color == ButtonColors.blue
-                  ? [
-                      Color(0xFF00EEFF),
-                      Color(0xFF070041),
-                    ]
-                  : [
-                      Color(0xFF5dfa7d),
-                      Color(0xFF04260f),
-                    ],
+              ),
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  width: 0,
+                  strokeAlign: BorderSide.strokeAlignOutside,
+                  color: color == ButtonColors.green
+                      ? const Color(0xFF00590A)
+                      : color == ButtonColors.blue
+                          ? const Color(0xFF003C59)
+                          : color == ButtonColors.lightBlue
+                              ? const Color(0xFF003459)
+                              : color == ButtonColors.red
+                                  ? const Color(0xFF590000)
+                                  : const Color(0xFF590027),
+                ),
+                borderRadius: BorderRadius.circular(radius),
+              ),
+              shadows: const [
+                BoxShadow(
+                  color: Color(0x3F000000),
+                  blurRadius: 4,
+                  offset: Offset(0, 4),
+                ),
+              ],
             ),
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical:needsWrap? 2:0, horizontal:needsWrap? 4:0),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: overlayColor ??
-                      (color == ButtonColors.blue
-                          ? Color(0x4029CEDA)
-                          : Color(0x4067DA29))),
-              child: child,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Ink(
+                width: width,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: color == ButtonColors.green
+                        ? [const Color(0xFF6FFB18), const Color(0xFF2BC408)]
+                        : color == ButtonColors.blue
+                            ? [const Color(0xFF1894FB), const Color(0xFF088BC4)]
+                            : color == ButtonColors.lightBlue
+                                ? [
+                                    const Color(0xFF18FBE0),
+                                    const Color(0xFF0875C4)
+                                  ]
+                                : color == ButtonColors.red
+                                    ? [
+                                        const Color(0xFFFB1818),
+                                        const Color(0xFFC40808),
+                                      ]
+                                    : [
+                                        const Color(0xFFF8187B),
+                                        const Color(0xFFC90A7F),
+                                      ],
+                  ),
+                  borderRadius: BorderRadius.circular(radius),
+                ),
+                child: widget,
+              ),
             ),
           ),
         ),
@@ -67,3 +126,5 @@ class AppButton extends StatelessWidget {
     );
   }
 }
+
+enum ButtonColors { green, red, blue, lightBlue, pink }

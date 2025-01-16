@@ -3,8 +3,10 @@ import 'package:candies/src/core/utils/icon_provider.dart';
 import 'package:candies/src/feature/rituals/bloc/app_bloc.dart';
 import 'package:candies/src/feature/rituals/model/shopping_list.dart';
 import 'package:candies/ui_kit/app_bar.dart';
+import 'package:candies/ui_kit/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 class ShopScreen extends StatelessWidget {
   const ShopScreen({super.key});
@@ -32,20 +34,39 @@ class ShopScreen extends StatelessWidget {
                   Expanded(
                     child: ListView.separated(
                       itemCount: state.shoppingList.length,
-                      separatorBuilder: (_, __) => const Divider(),
+                      separatorBuilder: (_, __) => const Gap(16),
                       itemBuilder: (context, index) {
                         final item = state.shoppingList[index];
-                        return ListTile(
-                          title: Text(item.name),
-                          subtitle: Text(item.quantity),
-                          trailing: IconButton(
-                            icon: AppIcon(
-                              asset: IconProvider.remove.buildImageUrl(),
-                              width: 33,
-                              height: 30,
+                        return Row(
+                          children: [
+                            AppButton(
+                              color: ButtonColors.pink,
+                              widget: Row(
+                                children: [
+                                  Text(item.name),
+                                  Text(item.quantity),
+                                ],
+                              ),
                             ),
-                            onPressed: () => removeItem(item, context),
-                          ),
+                            AppButton(
+                              color: ButtonColors.blue,
+                              widget: AppIcon(
+                                asset: IconProvider.shop.buildImageUrl(),
+                                width: 50,
+                                height: 43,
+                              ),
+                              onPressed: () => removeItem(item, context),
+                            ),
+                            AppButton(
+                              color: ButtonColors.red,
+                              widget: AppIcon(
+                                asset: IconProvider.remove.buildImageUrl(),
+                                width: 33,
+                                height: 30,
+                              ),
+                              onPressed: () => removeItem(item, context),
+                            ),
+                          ],
                         );
                       },
                     ),
@@ -55,17 +76,19 @@ class ShopScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        ElevatedButton(
+                        AppButton(
+                          color: ButtonColors.red,
                           onPressed: () => removeAll(context),
-                          child: const Text('remove all'),
+                          widget: const Text('remove all'),
                         ),
-                        ElevatedButton(
+                        AppButton(
+                          color: ButtonColors.green,
                           onPressed: () => removeAll(context),
-                          child: const Text('buy all'),
+                          widget: const Text('buy all'),
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               const AppBarWidget(

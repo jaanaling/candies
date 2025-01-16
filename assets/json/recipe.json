@@ -1,7 +1,7 @@
  [
       {
         "id": "n1",
-        "image":"Chocolate Chip Bliss.png",
+        "image":"assets/images/Chocolate Chip Bliss.png",
         "title": "Chocolate Chip Bliss",
         "category": "normal",
         "isLocked": false,
@@ -37,7 +37,7 @@
       },
       {
         "id": "n2",
-        "image":"Creamy Caramel Squares.png",
+        "image":"assets/images/Creamy Caramel Squares.png",
         "title": "Creamy Caramel Squares",
         "category": "normal",
         "isLocked": false,
@@ -73,7 +73,7 @@
       },
       {
         "id": "n3",
-        "image":"Peanut Butter Bites.png",
+        "image":"assets/images/Peanut Butter Bites.png",
         "title": "Peanut Butter Bites",
         "category": "normal",
         "isLocked": false,
@@ -108,7 +108,7 @@
       },
       {
         "id": "n4",
-        "image":"Fudgy Brownie Delight.png",
+        "image":"assets/images/Fudgy Brownie Delight.png",
         "title": "Fudgy Brownie Delight",
         "category": "normal",
         "isLocked": false,
@@ -144,7 +144,7 @@
       },
       {
         "id": "n5",
-        "image":"Berry Swirl Cheesecake.png",
+        "image":"assets/images/Berry Swirl Cheesecake.png",
         "title": "Berry Swirl Cheesecake",
         "category": "normal",
         "isLocked": false,
@@ -180,7 +180,7 @@
       },
       {
         "id": "n6",
-        "image":"Lemon Zest Cookies.png",
+        "image":"assets/images/Lemon Zest Cookies.png",
         "title": "Lemon Zest Cookies",
         "category": "normal",
         "isLocked": false,
@@ -216,7 +216,7 @@
       },
       {
         "id": "n7",
-        "image":"Crispy Rice Treats.png",
+        "image":"assets/images/Crispy Rice Treats.png",
         "title": "Crispy Rice Treats",
         "category": "normal",
         "isLocked": false,
@@ -250,7 +250,7 @@
       },
       {
         "id": "n8",
-        "image":"Vanilla Bean Fudge.png",
+        "image":"assets/images/Vanilla Bean Fudge.png",
         "title": "Vanilla Bean Fudge",
         "category": "normal",
         "isLocked": false,
@@ -285,7 +285,7 @@
       },
       {
         "id": "n9",
-        "image":"Classic Marshmallow Bars.png",
+        "image":"assets/images/Classic Marshmallow Bars.png",
         "title": "Classic Marshmallow Bars",
         "category": "normal",
         "isLocked": false,
@@ -319,7 +319,7 @@
       },
       {
         "id": "n10",
-        "image":"Dark Chocolate Truffles.png",
+        "image":"assets/images/Dark Chocolate Truffles.png",
         "title": "Dark Chocolate Truffles",
         "category": "normal",
         "isLocked": false,
@@ -352,7 +352,7 @@
       },
       {
         "id": "n11",
-        "image":"Honey Glazed Pecans.png",
+        "image":"assets/images/Honey Glazed Pecans.png",
         "title": "Honey Glazed Pecans",
         "category": "normal",
         "isLocked": false,
@@ -386,7 +386,7 @@
       },
       {
         "id": "n12",
-        "image":"White Chocolate Bark.png",
+        "image":"assets/images/White Chocolate Bark.png",
         "title": "White Chocolate Bark",
         "category": "normal",
         "isLocked": false,
@@ -419,7 +419,7 @@
       },
       {
         "id": "n13",
-        "image":"Cinnamon Sugar Donuts.png",
+        "image":"assets/images/Cinnamon Sugar Donuts.png",
         "title": "Cinnamon Sugar Donuts",
         "category": "normal",
         "isLocked": false,
@@ -455,7 +455,7 @@
       },
       {
         "id": "n14",
-        "image":"Buttery Shortbread Bites.png",
+        "image":"assets/images/Buttery Shortbread Bites.png",
         "title": "Buttery Shortbread Bites",
         "category": "normal",
         "isLocked": false,
@@ -490,7 +490,7 @@
       },
       {
         "id": "n15",
-        "image":"Toffee Crunch Squares.png",
+        "image":"assets/images/Toffee Crunch Squares.png",
         "title": "Toffee Crunch Squares",
         "category": "normal",
         "isLocked": false,
@@ -525,7 +525,7 @@
       },
       {
         "id": "n16",
-        "image":"Minty Chocolate Drops.png",
+        "image":"assets/images/Minty Chocolate Drops.png",
         "title": "Minty Chocolate Drops",
         "category": "normal",
         "isLocked": false,
@@ -559,7 +559,7 @@
       },
       {
         "id": "n17",
-        "image":"Coconut Macaroon Magic.png",
+        "image":"assets/images/Coconut Macaroon Magic.png",
         "title": "Coconut Macaroon Magic",
         "category": "normal",
         "isLocked": false,
@@ -593,7 +593,7 @@
       },
       {
         "id": "n18",
-        "image":"Raspberry Jelly Hearts.png",
+        "image":"assets/images/Raspberry Jelly Hearts.png",
         "title": "Raspberry Jelly Hearts",
         "category": "normal",
         "isLocked": false,
@@ -628,7 +628,7 @@
       },
       {
         "id": "n19",
-        "image":"Soft Gingerbread Cookies.png",
+        "image":"assets/images/Soft Gingerbread Cookies.png",
         "title": "Soft Gingerbread Cookies",
         "category": "normal",
         "isLocked": false,
@@ -664,7 +664,7 @@
       },
       {
         "id": "n20",
-        "image":"Nutty Nougat Bars.png",
+        "image":"assets/images/Nutty Nougat Bars.png",
         "title": "Nutty Nougat Bars",
         "category": "normal",
         "isLocked": false,
@@ -698,7 +698,7 @@
       },
       {
         "id": "n21",
-        "image":"Milk Chocolate Pops.png",
+        "image":"assets/images/Milk Chocolate Pops.png",
         "title": "Milk Chocolate Pops",
         "category": "normal",
         "isLocked": false,
@@ -731,7 +731,7 @@
       },
       {
         "id": "n22",
-        "image":"Salted Caramel Pretzels.png",
+        "image":"assets/images/Salted Caramel Pretzels.png",
         "title": "Salted Caramel Pretzels",
         "category": "normal",
         "isLocked": false,
@@ -765,7 +765,7 @@
       },
       {
         "id": "n23",
-        "image":"Strawberry Bliss Tarts.png",
+        "image":"assets/images/Strawberry Bliss Tarts.png",
         "title": "Strawberry Bliss Tarts",
         "category": "normal",
         "isLocked": false,
@@ -799,7 +799,7 @@
       },
       {
         "id": "n24",
-        "image":"Matcha Green Tea Fudge.png",
+        "image":"assets/images/Matcha Green Tea Fudge.png",
         "title": "Matcha Green Tea Fudge",
         "category": "normal",
         "isLocked": false,
@@ -834,7 +834,7 @@
   
       {
         "id": "b1",
-        "image":"Exploding Chocolate Lava Bomb.png",
+        "image":"assets/images/Exploding Chocolate Lava Bomb.png",
         "title": "Exploding Chocolate Lava Bomb",
         "category": "bomb",
         "isLocked": true,
@@ -873,7 +873,7 @@
       },
       {
         "id": "b2",
-        "image":"Golden Caramel Surprise Sphere.png",
+        "image":"assets/images/Golden Caramel Surprise Sphere.png",
         "title": "Golden Caramel Surprise Sphere",
         "category": "bomb",
         "isLocked": true,
@@ -911,7 +911,7 @@
       },
       {
         "id": "b3",
-        "image":"Sparkling Berry Blast Bomb.png",
+        "image":"assets/images/Sparkling Berry Blast Bomb.png",
         "title": "Sparkling Berry Blast Bomb",
         "category": "bomb",
         "isLocked": true,
@@ -949,7 +949,7 @@
       },
       {
         "id": "b4",
-        "image":"Frosted Candy Explosion Ball.png",
+        "image":"assets/images/Frosted Candy Explosion Ball.png",
         "title": "Frosted Candy Explosion Ball",
         "category": "bomb",
         "isLocked": true,
@@ -988,7 +988,7 @@
       {
         "id": "b5",
         "title": "Rainbow Sprinkle Delight Bomb",
-        "image": "Rainbow Sprinkle Delight Bomb.png",
+        "image":"assets/images/Rainbow Sprinkle Delight Bomb.png",
         "category": "bomb",
         "isLocked": true,
         "requiredCountToUnlock": 20,
@@ -1028,7 +1028,7 @@
 
         "title": "Hazelnut Crunch Inferno",
         "category": "bomb",
-        "image": "Hazelnut Crunch Inferno.png",
+        "image":"assets/images/Hazelnut Crunch Inferno.png",
         "isLocked": true,
         "requiredCountToUnlock": 24,
         "isCompleted": false,

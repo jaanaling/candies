@@ -21,7 +21,10 @@ class RecipeRepository {
       () async => await load(),
       (item) => item.toMap(),
       (itemList) async {
-        itemList.first = updated;
+        final index = itemList.indexWhere((d) => d.id == updated.id);
+        if (index != -1) {
+          itemList[index] = updated;
+        }
       },
     );
   }

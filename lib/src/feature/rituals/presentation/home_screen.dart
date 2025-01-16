@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:candies/routes/route_value.dart';
 import 'package:candies/src/core/utils/app_icon.dart';
 import 'package:candies/src/core/utils/icon_provider.dart';
+import 'package:candies/src/core/utils/size_utils.dart';
 import 'package:candies/src/feature/rituals/bloc/app_bloc.dart';
 import 'package:candies/src/feature/rituals/model/recipe.dart';
 import 'package:candies/ui_kit/app_bar.dart';
+import 'package:candies/ui_kit/app_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 enum RecipeScreenMode {
@@ -26,6 +32,91 @@ class _HomeScreenState extends State<HomeScreen> {
   String searchQuery = '';
   bool showCompletedOnly = false;
   int showDiffulty = 0;
+
+  void showFilterPopup() {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (_) => CupertinoActionSheet(
+        title: const Text('Select a filter'),
+        message: const Text('Filter by difficulty or pass rate'),
+        actions: [
+          CupertinoActionSheetAction(
+            child: const Text('Filter by complexity'),
+            onPressed: () {
+              // Закрываем ActionSheet и открываем Picker
+              context.pop();
+              showDifficultyPicker();
+            },
+          ),
+          CupertinoActionSheetAction(
+            child: const Text('Passage filter'),
+            onPressed: () {
+              setState(() {
+                showCompletedOnly = !showCompletedOnly;
+              });
+              context.pop();
+            },
+          ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          child: const Text('Cancellation'),
+          isDefaultAction: true,
+          onPressed: () {
+            context.pop();
+          },
+        ),
+      ),
+    );
+  }
+
+  // Метод, который показывает выбор сложности
+  void showDifficultyPicker() {
+    // Сохраняем текущее значение сложности,
+    // чтобы при прокрутке Picker не менять
+    // состояние экрана до подтверждения
+    int tempDifficulty = showDiffulty;
+
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.white,
+          height: 250,
+          child: Column(
+            children: [
+              Expanded(
+                child: CupertinoPicker(
+                  scrollController:
+                      FixedExtentScrollController(initialItem: tempDifficulty),
+                  itemExtent: 32,
+                  onSelectedItemChanged: (int index) {
+                    tempDifficulty = index;
+                  },
+                  children: List<Widget>.generate(6, (int index) {
+                    // Можно ограничить, например, от 0 до 5, где 0 = без фильтра
+                    return Center(
+                      child: Text(
+                        index == 0 ? "Cancellation" : 'Complexity $index',
+                      ),
+                    );
+                  }),
+                ),
+              ),
+              CupertinoButton(
+                child: const Text('Apply'),
+                onPressed: () {
+                  setState(() {
+                    showDiffulty = tempDifficulty;
+                  });
+                  context.pop(); // Закрываем Picker
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   List<Recipe> filteredRecipes(List<Recipe> allRecipes) {
     List<Recipe> byCategory;
@@ -67,8 +158,6 @@ class _HomeScreenState extends State<HomeScreen> {
         );
   }
 
-
-
   void openRecipe(Recipe recipe) {
     context.push(
       '${RouteValue.home.path}/${RouteValue.recipe.path}',
@@ -95,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         _buildCategoryButton(
-          icon: IconProvider.bomb.buildImageUrl(),
+          icon: IconProvider.bombres.buildImageUrl(),
           label: 'Sweet bombs',
           isActive: currentMode == RecipeScreenMode.bombs,
           onTap: () {
@@ -154,18 +243,15 @@ class _HomeScreenState extends State<HomeScreen> {
         IconButton(
           icon: AppIcon(
             asset: IconProvider.filtr.buildImageUrl(),
-            width: 21,
-            height: 21,
+            width: 42,
+            height: 37,
           ),
           onPressed: () {
-            setState(() {
-              showCompletedOnly = !showCompletedOnly;
-              filteredRecipes(allRecipes);
-            });
+            showFilterPopup();
           },
         ),
         SizedBox(
-          width: 300,
+          width: getWidth(context, percent: 0.7),
           child: TextField(
             decoration: const InputDecoration(
               hintText: 'Search...',
@@ -221,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
           if (state is! AppLoaded) return const SizedBox();
-  
+
           return Stack(
             children: [
               Padding(
@@ -230,56 +316,128 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     buildCategoryButtons(),
                     Expanded(
-                      child: ListView.separated(
-                        itemCount: filteredRecipes(state.recipes).length,
-                        separatorBuilder: (context, index) => const Divider(),
-                        itemBuilder: (context, index) {
-                          final recipe = filteredRecipes(state.recipes)[index];
-                
-                          if (recipe.isLocked) {
-                            return AppIcon(
-                              asset: IconProvider.lock.buildImageUrl(),
-                              width: 29,
-                              height: 32,
-                            );
-                          }
-                
-                          return ListTile(
-                            title: Text(recipe.title),
-                            subtitle: Row(
-                              children: [
-                                for (int i = 0; i < 5; i++)
-                                  AppIcon(
-                                    asset: IconProvider.bombres.buildImageUrl(),
-                                    color: i <
-                                     recipe.difficulty
-                                        ? null
-                                        : Colors.grey,
-                                    width: 21,
-                                    height: 21,
+                      child: currentMode != RecipeScreenMode.bombs
+                          ? ListView.separated(
+                              itemCount: filteredRecipes(state.recipes).length,
+                              separatorBuilder: (context, index) => Gap(17),
+                              itemBuilder: (context, index) {
+                                final recipe =
+                                    filteredRecipes(state.recipes)[index];
+
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 11),
+                                  child: AppButton(
+                                    color: ButtonColors.blue,
+                                    widget: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          6, 6, 12, 6),
+                                      child: Row(
+                                        children: [
+                                          AppIcon(
+                                            asset: recipe.image,
+                                            width: 101,
+                                            height: 101,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Gap(6),
+                                          Column(
+                                            children: [
+                                              Text(recipe.title),
+                                              Gap(13),
+                                              Row(
+                                                children: [
+                                                  for (int i = 0; i < 5; i++)
+                                                    AppIcon(
+                                                      asset: IconProvider
+                                                          .bombres
+                                                          .buildImageUrl(),
+                                                      color:
+                                                          i < recipe.difficulty
+                                                              ? null
+                                                              : Colors.grey,
+                                                      width: 21,
+                                                      height: 21,
+                                                    ),
+                                                       
+                                                ],
+                                              ),
+                                                Gap(10),
+                                                  if (recipe.isCompleted)
+                                                    const Text('done')
+                                                  else
+                                                    const Text('in progress'),
+                                            ],
+                                          ),
+                                          Spacer(),
+                                          IconButton(
+                                            icon: AppIcon(
+                                              asset: IconProvider.heart
+                                                  .buildImageUrl(),
+                                              color: recipe.isFavorite
+                                                  ? null
+                                                  : Colors.grey,
+                                              width: 33,
+                                              height: 30,
+                                            ),
+                                            onPressed: () {
+                                              toggleFavorite(recipe);
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    onPressed: () => openRecipe(recipe),
                                   ),
-                                const SizedBox(width: 10),
-                                if (recipe.isCompleted)
-                                  const Text('done')
-                                else
-                                  const Text('in progress'),
+                                );
+                              },
+                            )
+                          : Wrap(
+                              children: [
+                                for (var recipe
+                                    in filteredRecipes(state.recipes))
+                                  DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: recipe.isLocked
+                                            ? AssetImage(
+                                                IconProvider.bomb
+                                                    .buildImageUrl(),
+                                              )
+                                            : FileImage(
+                                                File(recipe.image),
+                                              ),
+                                      ),
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        recipe.isLocked
+                                            ? Image.asset(IconProvider.lock
+                                                .buildImageUrl())
+                                            : Text(recipe.isCompleted
+                                                ? 'done'
+                                                : 'in progress'),
+                                        Text(recipe.title),
+                                        Row(
+                                          children: [
+                                            for (int i = 0; i < 5; i++)
+                                              AppIcon(
+                                                asset: IconProvider.bombres
+                                                    .buildImageUrl(),
+                                                color: i < recipe.difficulty
+                                                    ? null
+                                                    : Colors.grey,
+                                                width: 21,
+                                                height: 21,
+                                              ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                               ],
                             ),
-                            trailing: IconButton(
-                              icon: AppIcon(
-                                asset: IconProvider.heart.buildImageUrl(),
-                                color: recipe.isFavorite ? null : Colors.grey,
-                                width: 33,
-                                height: 30,
-                              ),
-                              onPressed: () {
-                                toggleFavorite(recipe);
-                              },
-                            ),
-                            onTap: () => openRecipe(recipe),
-                          );
-                        },
-                      ),
                     ),
                   ],
                 ),

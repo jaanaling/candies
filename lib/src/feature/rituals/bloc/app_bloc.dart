@@ -11,7 +11,8 @@ part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final RecipeRepository recipeRepository = locator<RecipeRepository>();
-  final ShoppingListRepository shoppingRepository = locator<ShoppingListRepository>();
+  final ShoppingListRepository shoppingRepository =
+      locator<ShoppingListRepository>();
 
   AppBloc() : super(AppLoading()) {
     on<LoadDataEvent>(_onLoadData);
@@ -46,7 +47,17 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
     try {
       await recipeRepository.update(event.recipe);
-      final updatedRecipes = await recipeRepository.load();
+      List<Recipe> updatedRecipes = await recipeRepository.load();
+      final complitedRecipes =
+          updatedRecipes.where((r) => r.isCompleted).toList();
+      if (updatedRecipes.any(
+          (test) => test.requiredCountToUnlock == complitedRecipes.length)) {
+        final updatedRecipe = updatedRecipes.firstWhere(
+            (test) => test.requiredCountToUnlock == complitedRecipes.length);
+        await recipeRepository.update(updatedRecipe.copyWith(isLocked: false));
+        updatedRecipes = await recipeRepository.load();
+      }
+
       final currentShoppingList = (state as AppLoaded).shoppingList;
       emit(AppLoaded(
         recipes: updatedRecipes,
@@ -63,7 +74,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async {
     if (state is! AppLoaded) return;
 
-    emit(AppLoading());
+   
     try {
       await shoppingRepository.save(event.item);
       final updatedList = await shoppingRepository.load();
@@ -83,7 +94,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async {
     if (state is! AppLoaded) return;
 
-    emit(AppLoading());
+    
     try {
       await shoppingRepository.remove(event.item);
       final updatedList = await shoppingRepository.load();
@@ -103,7 +114,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async {
     if (state is! AppLoaded) return;
 
-    emit(AppLoading());
+   
     try {
       for (var item in (state as AppLoaded).shoppingList) {
         await shoppingRepository.remove(item);
