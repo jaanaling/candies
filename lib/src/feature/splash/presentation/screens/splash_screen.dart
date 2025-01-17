@@ -103,7 +103,8 @@ class _LoadingAnimationState extends State<LoadingAnimation>
         Text(
           'Loading',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 32,
+            fontFamily: 'Florida'
           ),
         ),
         Gap(3),
